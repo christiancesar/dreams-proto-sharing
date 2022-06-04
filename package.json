@@ -1,0 +1,21 @@
+{
+  "name": "dreams-proto-sharing",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "compile": "grpc_tools_node_protoc --js_out=import_style=commonjs,binary:./src/contracts --grpc_out=grpc_js:./src/contracts -I ./src/contracts ./src/contracts/*.proto && grpc_tools_node_protoc --plugin=protoc-gen-ts=./node_modules/.bin/protoc-gen-ts --ts_out=grpc_js:./src/contracts -I ./src/contracts ./src/contracts/*.proto"
+  },
+  "devDependencies": {
+    "@types/google-protobuf": "^3.15.6",
+    "google-protobuf": "^3.20.1",
+    "grpc-tools": "^1.11.2",
+    "grpc_tools_node_protoc_ts": "^5.3.2",
+    "ts-node": "^10.8.1",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^4.7.3"
+  },
+  "dependencies": {
+    "@grpc/grpc-js": "^1.6.7"
+  }
+}
