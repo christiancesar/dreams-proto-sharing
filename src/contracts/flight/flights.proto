@@ -29,9 +29,14 @@ message Flight {
 }
 
 
-message FlightRequest {
-  string itineraries = 1;
-  string price = 2;
+message FlightCreate {
+  string userId = 1;
+  string itineraries = 2;
+  string price = 3;
+}
+
+message FlightCreateRequest {
+  FlightCreate flightCreate = 1;
 }
 
 message FlightResponse {
@@ -49,7 +54,7 @@ message FlightShowRequest {
 
 service Flights {
   rpc searchFlightOffer(FlightOffersRequest) returns (FlightOffersResponse);
-  rpc createFlight(FlightRequest) returns (FlightResponse);
+  rpc createFlight(FlightCreateRequest) returns (FlightResponse);
   rpc listFlights(google.protobuf.Empty) returns (FlightListResponse);
   rpc showFlight(FlightShowRequest) returns (FlightResponse);
 }

@@ -2,7 +2,7 @@
 
 'use strict';
 var grpc = require('@grpc/grpc-js');
-var user_pb = require('./user_pb.js');
+var user_user_pb = require('../user/user_pb.js');
 var google_protobuf_empty_pb = require('google-protobuf/google/protobuf/empty_pb.js');
 
 function serialize_google_protobuf_Empty(arg) {
@@ -17,25 +17,25 @@ function deserialize_google_protobuf_Empty(buffer_arg) {
 }
 
 function serialize_user_UserRequest(arg) {
-  if (!(arg instanceof user_pb.UserRequest)) {
+  if (!(arg instanceof user_user_pb.UserRequest)) {
     throw new Error('Expected argument of type user.UserRequest');
   }
   return Buffer.from(arg.serializeBinary());
 }
 
 function deserialize_user_UserRequest(buffer_arg) {
-  return user_pb.UserRequest.deserializeBinary(new Uint8Array(buffer_arg));
+  return user_user_pb.UserRequest.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
 function serialize_user_UserResponse(arg) {
-  if (!(arg instanceof user_pb.UserResponse)) {
+  if (!(arg instanceof user_user_pb.UserResponse)) {
     throw new Error('Expected argument of type user.UserResponse');
   }
   return Buffer.from(arg.serializeBinary());
 }
 
 function deserialize_user_UserResponse(buffer_arg) {
-  return user_pb.UserResponse.deserializeBinary(new Uint8Array(buffer_arg));
+  return user_user_pb.UserResponse.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
 
@@ -44,8 +44,8 @@ var UsersService = exports.UsersService = {
     path: '/user.Users/createUser',
     requestStream: false,
     responseStream: false,
-    requestType: user_pb.UserRequest,
-    responseType: user_pb.UserResponse,
+    requestType: user_user_pb.UserRequest,
+    responseType: user_user_pb.UserResponse,
     requestSerialize: serialize_user_UserRequest,
     requestDeserialize: deserialize_user_UserRequest,
     responseSerialize: serialize_user_UserResponse,
@@ -56,7 +56,7 @@ var UsersService = exports.UsersService = {
     requestStream: false,
     responseStream: false,
     requestType: google_protobuf_empty_pb.Empty,
-    responseType: user_pb.UserResponse,
+    responseType: user_user_pb.UserResponse,
     requestSerialize: serialize_google_protobuf_Empty,
     requestDeserialize: deserialize_google_protobuf_Empty,
     responseSerialize: serialize_user_UserResponse,
@@ -66,8 +66,8 @@ var UsersService = exports.UsersService = {
     path: '/user.Users/showUser',
     requestStream: false,
     responseStream: false,
-    requestType: user_pb.UserRequest,
-    responseType: user_pb.UserResponse,
+    requestType: user_user_pb.UserRequest,
+    responseType: user_user_pb.UserResponse,
     requestSerialize: serialize_user_UserRequest,
     requestDeserialize: deserialize_user_UserRequest,
     responseSerialize: serialize_user_UserResponse,
@@ -77,8 +77,8 @@ var UsersService = exports.UsersService = {
     path: '/user.Users/updateUser',
     requestStream: false,
     responseStream: false,
-    requestType: user_pb.UserRequest,
-    responseType: user_pb.UserResponse,
+    requestType: user_user_pb.UserRequest,
+    responseType: user_user_pb.UserResponse,
     requestSerialize: serialize_user_UserRequest,
     requestDeserialize: deserialize_user_UserRequest,
     responseSerialize: serialize_user_UserResponse,

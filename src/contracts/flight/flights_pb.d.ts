@@ -1,5 +1,5 @@
 // package: flight
-// file: flights.proto
+// file: flight/flights.proto
 
 /* tslint:disable */
 /* eslint-disable */
@@ -117,26 +117,52 @@ export namespace Flight {
     }
 }
 
-export class FlightRequest extends jspb.Message { 
+export class FlightCreate extends jspb.Message { 
+    getUserid(): string;
+    setUserid(value: string): FlightCreate;
     getItineraries(): string;
-    setItineraries(value: string): FlightRequest;
+    setItineraries(value: string): FlightCreate;
     getPrice(): string;
-    setPrice(value: string): FlightRequest;
+    setPrice(value: string): FlightCreate;
 
     serializeBinary(): Uint8Array;
-    toObject(includeInstance?: boolean): FlightRequest.AsObject;
-    static toObject(includeInstance: boolean, msg: FlightRequest): FlightRequest.AsObject;
+    toObject(includeInstance?: boolean): FlightCreate.AsObject;
+    static toObject(includeInstance: boolean, msg: FlightCreate): FlightCreate.AsObject;
     static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
     static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-    static serializeBinaryToWriter(message: FlightRequest, writer: jspb.BinaryWriter): void;
-    static deserializeBinary(bytes: Uint8Array): FlightRequest;
-    static deserializeBinaryFromReader(message: FlightRequest, reader: jspb.BinaryReader): FlightRequest;
+    static serializeBinaryToWriter(message: FlightCreate, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): FlightCreate;
+    static deserializeBinaryFromReader(message: FlightCreate, reader: jspb.BinaryReader): FlightCreate;
 }
 
-export namespace FlightRequest {
+export namespace FlightCreate {
     export type AsObject = {
+        userid: string,
         itineraries: string,
         price: string,
+    }
+}
+
+export class FlightCreateRequest extends jspb.Message { 
+
+    hasFlightcreate(): boolean;
+    clearFlightcreate(): void;
+    getFlightcreate(): FlightCreate | undefined;
+    setFlightcreate(value?: FlightCreate): FlightCreateRequest;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): FlightCreateRequest.AsObject;
+    static toObject(includeInstance: boolean, msg: FlightCreateRequest): FlightCreateRequest.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: FlightCreateRequest, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): FlightCreateRequest;
+    static deserializeBinaryFromReader(message: FlightCreateRequest, reader: jspb.BinaryReader): FlightCreateRequest;
+}
+
+export namespace FlightCreateRequest {
+    export type AsObject = {
+        flightcreate?: FlightCreate.AsObject,
     }
 }
 

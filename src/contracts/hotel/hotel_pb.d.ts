@@ -1,5 +1,5 @@
 // package: hotel
-// file: hotel.proto
+// file: hotel/hotel.proto
 
 /* tslint:disable */
 /* eslint-disable */

@@ -1,5 +1,5 @@
 // package: user
-// file: user.proto
+// file: user/user.proto
 
 /* tslint:disable */
 /* eslint-disable */

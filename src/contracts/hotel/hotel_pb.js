@@ -1,4 +1,4 @@
-// source: hotel.proto
+// source: hotel/hotel.proto
 /**
  * @fileoverview
  * @enhanceable
