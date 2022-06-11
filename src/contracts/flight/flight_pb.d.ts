@@ -1,5 +1,5 @@
 // package: flight
-// file: flight/flights.proto
+// file: flight/flight.proto
 
 /* tslint:disable */
 /* eslint-disable */

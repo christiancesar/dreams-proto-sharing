@@ -1,4 +1,4 @@
-// source: flight/flights.proto
+// source: flight/flight.proto
 /**
  * @fileoverview
  * @enhanceable
