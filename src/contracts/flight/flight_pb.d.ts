@@ -230,3 +230,23 @@ export namespace FlightShowRequest {
         id: string,
     }
 }
+
+export class FlightByUserRequest extends jspb.Message { 
+    getUserid(): string;
+    setUserid(value: string): FlightByUserRequest;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): FlightByUserRequest.AsObject;
+    static toObject(includeInstance: boolean, msg: FlightByUserRequest): FlightByUserRequest.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: FlightByUserRequest, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): FlightByUserRequest;
+    static deserializeBinaryFromReader(message: FlightByUserRequest, reader: jspb.BinaryReader): FlightByUserRequest;
+}
+
+export namespace FlightByUserRequest {
+    export type AsObject = {
+        userid: string,
+    }
+}

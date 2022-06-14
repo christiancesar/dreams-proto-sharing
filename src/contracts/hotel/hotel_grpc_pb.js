@@ -16,6 +16,17 @@ function deserialize_google_protobuf_Empty(buffer_arg) {
   return google_protobuf_empty_pb.Empty.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
+function serialize_hotel_HotelCreateRequest(arg) {
+  if (!(arg instanceof hotel_hotel_pb.HotelCreateRequest)) {
+    throw new Error('Expected argument of type hotel.HotelCreateRequest');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_hotel_HotelCreateRequest(buffer_arg) {
+  return hotel_hotel_pb.HotelCreateRequest.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
 function serialize_hotel_HotelListResponse(arg) {
   if (!(arg instanceof hotel_hotel_pb.HotelListResponse)) {
     throw new Error('Expected argument of type hotel.HotelListResponse');
@@ -49,17 +60,6 @@ function deserialize_hotel_HotelOffersResponse(buffer_arg) {
   return hotel_hotel_pb.HotelOffersResponse.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
-function serialize_hotel_HotelRequest(arg) {
-  if (!(arg instanceof hotel_hotel_pb.HotelRequest)) {
-    throw new Error('Expected argument of type hotel.HotelRequest');
-  }
-  return Buffer.from(arg.serializeBinary());
-}
-
-function deserialize_hotel_HotelRequest(buffer_arg) {
-  return hotel_hotel_pb.HotelRequest.deserializeBinary(new Uint8Array(buffer_arg));
-}
-
 function serialize_hotel_HotelResponse(arg) {
   if (!(arg instanceof hotel_hotel_pb.HotelResponse)) {
     throw new Error('Expected argument of type hotel.HotelResponse');
@@ -82,6 +82,17 @@ function deserialize_hotel_HotelShowRequest(buffer_arg) {
   return hotel_hotel_pb.HotelShowRequest.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
+function serialize_hotel_HotelsByUserRequest(arg) {
+  if (!(arg instanceof hotel_hotel_pb.HotelsByUserRequest)) {
+    throw new Error('Expected argument of type hotel.HotelsByUserRequest');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_hotel_HotelsByUserRequest(buffer_arg) {
+  return hotel_hotel_pb.HotelsByUserRequest.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
 
 var HotelsService = exports.HotelsService = {
   searchHotelOffer: {
@@ -99,10 +110,10 @@ var HotelsService = exports.HotelsService = {
     path: '/hotel.Hotels/createHotel',
     requestStream: false,
     responseStream: false,
-    requestType: hotel_hotel_pb.HotelRequest,
+    requestType: hotel_hotel_pb.HotelCreateRequest,
     responseType: hotel_hotel_pb.HotelResponse,
-    requestSerialize: serialize_hotel_HotelRequest,
-    requestDeserialize: deserialize_hotel_HotelRequest,
+    requestSerialize: serialize_hotel_HotelCreateRequest,
+    requestDeserialize: deserialize_hotel_HotelCreateRequest,
     responseSerialize: serialize_hotel_HotelResponse,
     responseDeserialize: deserialize_hotel_HotelResponse,
   },
@@ -127,6 +138,17 @@ var HotelsService = exports.HotelsService = {
     requestDeserialize: deserialize_hotel_HotelShowRequest,
     responseSerialize: serialize_hotel_HotelResponse,
     responseDeserialize: deserialize_hotel_HotelResponse,
+  },
+  listHotelByUser: {
+    path: '/hotel.Hotels/listHotelByUser',
+    requestStream: false,
+    responseStream: false,
+    requestType: hotel_hotel_pb.HotelsByUserRequest,
+    responseType: hotel_hotel_pb.HotelListResponse,
+    requestSerialize: serialize_hotel_HotelsByUserRequest,
+    requestDeserialize: deserialize_hotel_HotelsByUserRequest,
+    responseSerialize: serialize_hotel_HotelListResponse,
+    responseDeserialize: deserialize_hotel_HotelListResponse,
   },
 };
 

@@ -26,9 +26,14 @@ message Hotel {
 }
 
 
-message HotelRequest {
-  string hotel = 1;
-  string offers = 2;
+message HotelCreate {
+  string userId = 1;
+  string hotel = 2;
+  string offers = 3;
+}
+
+message HotelCreateRequest {
+  HotelCreate hotelCreate = 1;
 }
 
 message HotelResponse {
@@ -44,9 +49,15 @@ message HotelShowRequest {
   string id = 1;
 }
 
+message HotelsByUserRequest {
+  string userId = 1;
+}
+
 service Hotels {
   rpc searchHotelOffer(HotelOffersRequest) returns (HotelOffersResponse);
-  rpc createHotel(HotelRequest) returns (HotelResponse);
+  rpc createHotel(HotelCreateRequest) returns (HotelResponse);
   rpc listHotels(google.protobuf.Empty) returns (HotelListResponse);
   rpc showHotel(HotelShowRequest) returns (HotelResponse);
+
+  rpc listHotelByUser(HotelsByUserRequest) returns (HotelListResponse);
 }

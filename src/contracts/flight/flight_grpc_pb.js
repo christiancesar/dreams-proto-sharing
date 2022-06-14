@@ -5,6 +5,17 @@ var grpc = require('@grpc/grpc-js');
 var flight_flight_pb = require('../flight/flight_pb.js');
 var google_protobuf_empty_pb = require('google-protobuf/google/protobuf/empty_pb.js');
 
+function serialize_flight_FlightByUserRequest(arg) {
+  if (!(arg instanceof flight_flight_pb.FlightByUserRequest)) {
+    throw new Error('Expected argument of type flight.FlightByUserRequest');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_flight_FlightByUserRequest(buffer_arg) {
+  return flight_flight_pb.FlightByUserRequest.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
 function serialize_flight_FlightCreateRequest(arg) {
   if (!(arg instanceof flight_flight_pb.FlightCreateRequest)) {
     throw new Error('Expected argument of type flight.FlightCreateRequest');
@@ -127,6 +138,17 @@ var FlightsService = exports.FlightsService = {
     requestDeserialize: deserialize_flight_FlightShowRequest,
     responseSerialize: serialize_flight_FlightResponse,
     responseDeserialize: deserialize_flight_FlightResponse,
+  },
+  listFlightbyUser: {
+    path: '/flight.Flights/listFlightbyUser',
+    requestStream: false,
+    responseStream: false,
+    requestType: flight_flight_pb.FlightByUserRequest,
+    responseType: flight_flight_pb.FlightListResponse,
+    requestSerialize: serialize_flight_FlightByUserRequest,
+    requestDeserialize: deserialize_flight_FlightByUserRequest,
+    responseSerialize: serialize_flight_FlightListResponse,
+    responseDeserialize: deserialize_flight_FlightListResponse,
   },
 };
 

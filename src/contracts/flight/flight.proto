@@ -52,9 +52,14 @@ message FlightShowRequest {
   string id = 1;
 }
 
+message FlightByUserRequest {
+  string userId = 1;
+}
+
 service Flights {
   rpc searchFlightOffer(FlightOffersRequest) returns (FlightOffersResponse);
   rpc createFlight(FlightCreateRequest) returns (FlightResponse);
   rpc listFlights(google.protobuf.Empty) returns (FlightListResponse);
   rpc showFlight(FlightShowRequest) returns (FlightResponse);
+  rpc listFlightbyUser(FlightByUserRequest) returns (FlightListResponse);
 }

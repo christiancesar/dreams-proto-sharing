@@ -13,6 +13,7 @@ interface IFlightsService extends grpc.ServiceDefinition<grpc.UntypedServiceImpl
     createFlight: IFlightsService_IcreateFlight;
     listFlights: IFlightsService_IlistFlights;
     showFlight: IFlightsService_IshowFlight;
+    listFlightbyUser: IFlightsService_IlistFlightbyUser;
 }
 
 interface IFlightsService_IsearchFlightOffer extends grpc.MethodDefinition<flight_flight_pb.FlightOffersRequest, flight_flight_pb.FlightOffersResponse> {
@@ -51,6 +52,15 @@ interface IFlightsService_IshowFlight extends grpc.MethodDefinition<flight_fligh
     responseSerialize: grpc.serialize<flight_flight_pb.FlightResponse>;
     responseDeserialize: grpc.deserialize<flight_flight_pb.FlightResponse>;
 }
+interface IFlightsService_IlistFlightbyUser extends grpc.MethodDefinition<flight_flight_pb.FlightByUserRequest, flight_flight_pb.FlightListResponse> {
+    path: "/flight.Flights/listFlightbyUser";
+    requestStream: false;
+    responseStream: false;
+    requestSerialize: grpc.serialize<flight_flight_pb.FlightByUserRequest>;
+    requestDeserialize: grpc.deserialize<flight_flight_pb.FlightByUserRequest>;
+    responseSerialize: grpc.serialize<flight_flight_pb.FlightListResponse>;
+    responseDeserialize: grpc.deserialize<flight_flight_pb.FlightListResponse>;
+}
 
 export const FlightsService: IFlightsService;
 
@@ -59,6 +69,7 @@ export interface IFlightsServer extends grpc.UntypedServiceImplementation {
     createFlight: grpc.handleUnaryCall<flight_flight_pb.FlightCreateRequest, flight_flight_pb.FlightResponse>;
     listFlights: grpc.handleUnaryCall<google_protobuf_empty_pb.Empty, flight_flight_pb.FlightListResponse>;
     showFlight: grpc.handleUnaryCall<flight_flight_pb.FlightShowRequest, flight_flight_pb.FlightResponse>;
+    listFlightbyUser: grpc.handleUnaryCall<flight_flight_pb.FlightByUserRequest, flight_flight_pb.FlightListResponse>;
 }
 
 export interface IFlightsClient {
@@ -74,6 +85,9 @@ export interface IFlightsClient {
     showFlight(request: flight_flight_pb.FlightShowRequest, callback: (error: grpc.ServiceError | null, response: flight_flight_pb.FlightResponse) => void): grpc.ClientUnaryCall;
     showFlight(request: flight_flight_pb.FlightShowRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: flight_flight_pb.FlightResponse) => void): grpc.ClientUnaryCall;
     showFlight(request: flight_flight_pb.FlightShowRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: flight_flight_pb.FlightResponse) => void): grpc.ClientUnaryCall;
+    listFlightbyUser(request: flight_flight_pb.FlightByUserRequest, callback: (error: grpc.ServiceError | null, response: flight_flight_pb.FlightListResponse) => void): grpc.ClientUnaryCall;
+    listFlightbyUser(request: flight_flight_pb.FlightByUserRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: flight_flight_pb.FlightListResponse) => void): grpc.ClientUnaryCall;
+    listFlightbyUser(request: flight_flight_pb.FlightByUserRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: flight_flight_pb.FlightListResponse) => void): grpc.ClientUnaryCall;
 }
 
 export class FlightsClient extends grpc.Client implements IFlightsClient {
@@ -90,4 +104,7 @@ export class FlightsClient extends grpc.Client implements IFlightsClient {
     public showFlight(request: flight_flight_pb.FlightShowRequest, callback: (error: grpc.ServiceError | null, response: flight_flight_pb.FlightResponse) => void): grpc.ClientUnaryCall;
     public showFlight(request: flight_flight_pb.FlightShowRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: flight_flight_pb.FlightResponse) => void): grpc.ClientUnaryCall;
     public showFlight(request: flight_flight_pb.FlightShowRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: flight_flight_pb.FlightResponse) => void): grpc.ClientUnaryCall;
+    public listFlightbyUser(request: flight_flight_pb.FlightByUserRequest, callback: (error: grpc.ServiceError | null, response: flight_flight_pb.FlightListResponse) => void): grpc.ClientUnaryCall;
+    public listFlightbyUser(request: flight_flight_pb.FlightByUserRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: flight_flight_pb.FlightListResponse) => void): grpc.ClientUnaryCall;
+    public listFlightbyUser(request: flight_flight_pb.FlightByUserRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: flight_flight_pb.FlightListResponse) => void): grpc.ClientUnaryCall;
 }

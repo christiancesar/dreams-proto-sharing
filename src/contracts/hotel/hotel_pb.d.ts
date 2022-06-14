@@ -108,26 +108,52 @@ export namespace Hotel {
     }
 }
 
-export class HotelRequest extends jspb.Message { 
+export class HotelCreate extends jspb.Message { 
+    getUserid(): string;
+    setUserid(value: string): HotelCreate;
     getHotel(): string;
-    setHotel(value: string): HotelRequest;
+    setHotel(value: string): HotelCreate;
     getOffers(): string;
-    setOffers(value: string): HotelRequest;
+    setOffers(value: string): HotelCreate;
 
     serializeBinary(): Uint8Array;
-    toObject(includeInstance?: boolean): HotelRequest.AsObject;
-    static toObject(includeInstance: boolean, msg: HotelRequest): HotelRequest.AsObject;
+    toObject(includeInstance?: boolean): HotelCreate.AsObject;
+    static toObject(includeInstance: boolean, msg: HotelCreate): HotelCreate.AsObject;
     static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
     static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-    static serializeBinaryToWriter(message: HotelRequest, writer: jspb.BinaryWriter): void;
-    static deserializeBinary(bytes: Uint8Array): HotelRequest;
-    static deserializeBinaryFromReader(message: HotelRequest, reader: jspb.BinaryReader): HotelRequest;
+    static serializeBinaryToWriter(message: HotelCreate, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): HotelCreate;
+    static deserializeBinaryFromReader(message: HotelCreate, reader: jspb.BinaryReader): HotelCreate;
 }
 
-export namespace HotelRequest {
+export namespace HotelCreate {
     export type AsObject = {
+        userid: string,
         hotel: string,
         offers: string,
+    }
+}
+
+export class HotelCreateRequest extends jspb.Message { 
+
+    hasHotelcreate(): boolean;
+    clearHotelcreate(): void;
+    getHotelcreate(): HotelCreate | undefined;
+    setHotelcreate(value?: HotelCreate): HotelCreateRequest;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): HotelCreateRequest.AsObject;
+    static toObject(includeInstance: boolean, msg: HotelCreateRequest): HotelCreateRequest.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: HotelCreateRequest, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): HotelCreateRequest;
+    static deserializeBinaryFromReader(message: HotelCreateRequest, reader: jspb.BinaryReader): HotelCreateRequest;
+}
+
+export namespace HotelCreateRequest {
+    export type AsObject = {
+        hotelcreate?: HotelCreate.AsObject,
     }
 }
 
@@ -193,5 +219,25 @@ export class HotelShowRequest extends jspb.Message {
 export namespace HotelShowRequest {
     export type AsObject = {
         id: string,
+    }
+}
+
+export class HotelsByUserRequest extends jspb.Message { 
+    getUserid(): string;
+    setUserid(value: string): HotelsByUserRequest;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): HotelsByUserRequest.AsObject;
+    static toObject(includeInstance: boolean, msg: HotelsByUserRequest): HotelsByUserRequest.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: HotelsByUserRequest, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): HotelsByUserRequest;
+    static deserializeBinaryFromReader(message: HotelsByUserRequest, reader: jspb.BinaryReader): HotelsByUserRequest;
+}
+
+export namespace HotelsByUserRequest {
+    export type AsObject = {
+        userid: string,
     }
 }

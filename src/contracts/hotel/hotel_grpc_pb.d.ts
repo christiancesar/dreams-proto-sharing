@@ -13,6 +13,7 @@ interface IHotelsService extends grpc.ServiceDefinition<grpc.UntypedServiceImple
     createHotel: IHotelsService_IcreateHotel;
     listHotels: IHotelsService_IlistHotels;
     showHotel: IHotelsService_IshowHotel;
+    listHotelByUser: IHotelsService_IlistHotelByUser;
 }
 
 interface IHotelsService_IsearchHotelOffer extends grpc.MethodDefinition<hotel_hotel_pb.HotelOffersRequest, hotel_hotel_pb.HotelOffersResponse> {
@@ -24,12 +25,12 @@ interface IHotelsService_IsearchHotelOffer extends grpc.MethodDefinition<hotel_h
     responseSerialize: grpc.serialize<hotel_hotel_pb.HotelOffersResponse>;
     responseDeserialize: grpc.deserialize<hotel_hotel_pb.HotelOffersResponse>;
 }
-interface IHotelsService_IcreateHotel extends grpc.MethodDefinition<hotel_hotel_pb.HotelRequest, hotel_hotel_pb.HotelResponse> {
+interface IHotelsService_IcreateHotel extends grpc.MethodDefinition<hotel_hotel_pb.HotelCreateRequest, hotel_hotel_pb.HotelResponse> {
     path: "/hotel.Hotels/createHotel";
     requestStream: false;
     responseStream: false;
-    requestSerialize: grpc.serialize<hotel_hotel_pb.HotelRequest>;
-    requestDeserialize: grpc.deserialize<hotel_hotel_pb.HotelRequest>;
+    requestSerialize: grpc.serialize<hotel_hotel_pb.HotelCreateRequest>;
+    requestDeserialize: grpc.deserialize<hotel_hotel_pb.HotelCreateRequest>;
     responseSerialize: grpc.serialize<hotel_hotel_pb.HotelResponse>;
     responseDeserialize: grpc.deserialize<hotel_hotel_pb.HotelResponse>;
 }
@@ -51,29 +52,42 @@ interface IHotelsService_IshowHotel extends grpc.MethodDefinition<hotel_hotel_pb
     responseSerialize: grpc.serialize<hotel_hotel_pb.HotelResponse>;
     responseDeserialize: grpc.deserialize<hotel_hotel_pb.HotelResponse>;
 }
+interface IHotelsService_IlistHotelByUser extends grpc.MethodDefinition<hotel_hotel_pb.HotelsByUserRequest, hotel_hotel_pb.HotelListResponse> {
+    path: "/hotel.Hotels/listHotelByUser";
+    requestStream: false;
+    responseStream: false;
+    requestSerialize: grpc.serialize<hotel_hotel_pb.HotelsByUserRequest>;
+    requestDeserialize: grpc.deserialize<hotel_hotel_pb.HotelsByUserRequest>;
+    responseSerialize: grpc.serialize<hotel_hotel_pb.HotelListResponse>;
+    responseDeserialize: grpc.deserialize<hotel_hotel_pb.HotelListResponse>;
+}
 
 export const HotelsService: IHotelsService;
 
 export interface IHotelsServer extends grpc.UntypedServiceImplementation {
     searchHotelOffer: grpc.handleUnaryCall<hotel_hotel_pb.HotelOffersRequest, hotel_hotel_pb.HotelOffersResponse>;
-    createHotel: grpc.handleUnaryCall<hotel_hotel_pb.HotelRequest, hotel_hotel_pb.HotelResponse>;
+    createHotel: grpc.handleUnaryCall<hotel_hotel_pb.HotelCreateRequest, hotel_hotel_pb.HotelResponse>;
     listHotels: grpc.handleUnaryCall<google_protobuf_empty_pb.Empty, hotel_hotel_pb.HotelListResponse>;
     showHotel: grpc.handleUnaryCall<hotel_hotel_pb.HotelShowRequest, hotel_hotel_pb.HotelResponse>;
+    listHotelByUser: grpc.handleUnaryCall<hotel_hotel_pb.HotelsByUserRequest, hotel_hotel_pb.HotelListResponse>;
 }
 
 export interface IHotelsClient {
     searchHotelOffer(request: hotel_hotel_pb.HotelOffersRequest, callback: (error: grpc.ServiceError | null, response: hotel_hotel_pb.HotelOffersResponse) => void): grpc.ClientUnaryCall;
     searchHotelOffer(request: hotel_hotel_pb.HotelOffersRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: hotel_hotel_pb.HotelOffersResponse) => void): grpc.ClientUnaryCall;
     searchHotelOffer(request: hotel_hotel_pb.HotelOffersRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: hotel_hotel_pb.HotelOffersResponse) => void): grpc.ClientUnaryCall;
-    createHotel(request: hotel_hotel_pb.HotelRequest, callback: (error: grpc.ServiceError | null, response: hotel_hotel_pb.HotelResponse) => void): grpc.ClientUnaryCall;
-    createHotel(request: hotel_hotel_pb.HotelRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: hotel_hotel_pb.HotelResponse) => void): grpc.ClientUnaryCall;
-    createHotel(request: hotel_hotel_pb.HotelRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: hotel_hotel_pb.HotelResponse) => void): grpc.ClientUnaryCall;
+    createHotel(request: hotel_hotel_pb.HotelCreateRequest, callback: (error: grpc.ServiceError | null, response: hotel_hotel_pb.HotelResponse) => void): grpc.ClientUnaryCall;
+    createHotel(request: hotel_hotel_pb.HotelCreateRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: hotel_hotel_pb.HotelResponse) => void): grpc.ClientUnaryCall;
+    createHotel(request: hotel_hotel_pb.HotelCreateRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: hotel_hotel_pb.HotelResponse) => void): grpc.ClientUnaryCall;
     listHotels(request: google_protobuf_empty_pb.Empty, callback: (error: grpc.ServiceError | null, response: hotel_hotel_pb.HotelListResponse) => void): grpc.ClientUnaryCall;
     listHotels(request: google_protobuf_empty_pb.Empty, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: hotel_hotel_pb.HotelListResponse) => void): grpc.ClientUnaryCall;
     listHotels(request: google_protobuf_empty_pb.Empty, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: hotel_hotel_pb.HotelListResponse) => void): grpc.ClientUnaryCall;
     showHotel(request: hotel_hotel_pb.HotelShowRequest, callback: (error: grpc.ServiceError | null, response: hotel_hotel_pb.HotelResponse) => void): grpc.ClientUnaryCall;
     showHotel(request: hotel_hotel_pb.HotelShowRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: hotel_hotel_pb.HotelResponse) => void): grpc.ClientUnaryCall;
     showHotel(request: hotel_hotel_pb.HotelShowRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: hotel_hotel_pb.HotelResponse) => void): grpc.ClientUnaryCall;
+    listHotelByUser(request: hotel_hotel_pb.HotelsByUserRequest, callback: (error: grpc.ServiceError | null, response: hotel_hotel_pb.HotelListResponse) => void): grpc.ClientUnaryCall;
+    listHotelByUser(request: hotel_hotel_pb.HotelsByUserRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: hotel_hotel_pb.HotelListResponse) => void): grpc.ClientUnaryCall;
+    listHotelByUser(request: hotel_hotel_pb.HotelsByUserRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: hotel_hotel_pb.HotelListResponse) => void): grpc.ClientUnaryCall;
 }
 
 export class HotelsClient extends grpc.Client implements IHotelsClient {
@@ -81,13 +95,16 @@ export class HotelsClient extends grpc.Client implements IHotelsClient {
     public searchHotelOffer(request: hotel_hotel_pb.HotelOffersRequest, callback: (error: grpc.ServiceError | null, response: hotel_hotel_pb.HotelOffersResponse) => void): grpc.ClientUnaryCall;
     public searchHotelOffer(request: hotel_hotel_pb.HotelOffersRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: hotel_hotel_pb.HotelOffersResponse) => void): grpc.ClientUnaryCall;
     public searchHotelOffer(request: hotel_hotel_pb.HotelOffersRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: hotel_hotel_pb.HotelOffersResponse) => void): grpc.ClientUnaryCall;
-    public createHotel(request: hotel_hotel_pb.HotelRequest, callback: (error: grpc.ServiceError | null, response: hotel_hotel_pb.HotelResponse) => void): grpc.ClientUnaryCall;
-    public createHotel(request: hotel_hotel_pb.HotelRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: hotel_hotel_pb.HotelResponse) => void): grpc.ClientUnaryCall;
-    public createHotel(request: hotel_hotel_pb.HotelRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: hotel_hotel_pb.HotelResponse) => void): grpc.ClientUnaryCall;
+    public createHotel(request: hotel_hotel_pb.HotelCreateRequest, callback: (error: grpc.ServiceError | null, response: hotel_hotel_pb.HotelResponse) => void): grpc.ClientUnaryCall;
+    public createHotel(request: hotel_hotel_pb.HotelCreateRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: hotel_hotel_pb.HotelResponse) => void): grpc.ClientUnaryCall;
+    public createHotel(request: hotel_hotel_pb.HotelCreateRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: hotel_hotel_pb.HotelResponse) => void): grpc.ClientUnaryCall;
     public listHotels(request: google_protobuf_empty_pb.Empty, callback: (error: grpc.ServiceError | null, response: hotel_hotel_pb.HotelListResponse) => void): grpc.ClientUnaryCall;
     public listHotels(request: google_protobuf_empty_pb.Empty, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: hotel_hotel_pb.HotelListResponse) => void): grpc.ClientUnaryCall;
     public listHotels(request: google_protobuf_empty_pb.Empty, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: hotel_hotel_pb.HotelListResponse) => void): grpc.ClientUnaryCall;
     public showHotel(request: hotel_hotel_pb.HotelShowRequest, callback: (error: grpc.ServiceError | null, response: hotel_hotel_pb.HotelResponse) => void): grpc.ClientUnaryCall;
     public showHotel(request: hotel_hotel_pb.HotelShowRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: hotel_hotel_pb.HotelResponse) => void): grpc.ClientUnaryCall;
     public showHotel(request: hotel_hotel_pb.HotelShowRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: hotel_hotel_pb.HotelResponse) => void): grpc.ClientUnaryCall;
+    public listHotelByUser(request: hotel_hotel_pb.HotelsByUserRequest, callback: (error: grpc.ServiceError | null, response: hotel_hotel_pb.HotelListResponse) => void): grpc.ClientUnaryCall;
+    public listHotelByUser(request: hotel_hotel_pb.HotelsByUserRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: hotel_hotel_pb.HotelListResponse) => void): grpc.ClientUnaryCall;
+    public listHotelByUser(request: hotel_hotel_pb.HotelsByUserRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: hotel_hotel_pb.HotelListResponse) => void): grpc.ClientUnaryCall;
 }
