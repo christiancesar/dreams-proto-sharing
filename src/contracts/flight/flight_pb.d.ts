@@ -98,6 +98,10 @@ export class Flight extends jspb.Message {
     setItineraries(value: string): Flight;
     getPrice(): string;
     setPrice(value: string): Flight;
+    getCreatedat(): number;
+    setCreatedat(value: number): Flight;
+    getUpdateat(): number;
+    setUpdateat(value: number): Flight;
 
     serializeBinary(): Uint8Array;
     toObject(includeInstance?: boolean): Flight.AsObject;
@@ -114,6 +118,8 @@ export namespace Flight {
         id: string,
         itineraries: string,
         price: string,
+        createdat: number,
+        updateat: number,
     }
 }
 
@@ -124,6 +130,8 @@ export class FlightCreate extends jspb.Message {
     setItineraries(value: string): FlightCreate;
     getPrice(): string;
     setPrice(value: string): FlightCreate;
+    getIspackage(): boolean;
+    setIspackage(value: boolean): FlightCreate;
 
     serializeBinary(): Uint8Array;
     toObject(includeInstance?: boolean): FlightCreate.AsObject;
@@ -140,6 +148,7 @@ export namespace FlightCreate {
         userid: string,
         itineraries: string,
         price: string,
+        ispackage: boolean,
     }
 }
 

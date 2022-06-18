@@ -1,6 +1,6 @@
 {
   "name": "dreams-proto-sharing",
-  "version": "1.0.33",
+  "version": "1.0.4a",
   "main": "index.js",
   "license": "MIT",
   "scripts": {

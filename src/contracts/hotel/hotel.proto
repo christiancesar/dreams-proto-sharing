@@ -11,6 +11,7 @@ message HotelOffersSearch {
   int64 roomQuantity = 4;
   int64 adults = 5;
 }
+
 message HotelOffersRequest {
   HotelOffersSearch hotelOffersSearch = 1;
 }
@@ -23,6 +24,8 @@ message Hotel {
   string id = 1;
   string hotel = 2;
   string offers = 3;
+  int64 createdAt = 5;
+  int64 updateAt = 6;
 }
 
 
@@ -30,6 +33,8 @@ message HotelCreate {
   string userId = 1;
   string hotel = 2;
   string offers = 3;
+  bool isPackage = 4;
+  
 }
 
 message HotelCreateRequest {

@@ -89,6 +89,10 @@ export class Hotel extends jspb.Message {
     setHotel(value: string): Hotel;
     getOffers(): string;
     setOffers(value: string): Hotel;
+    getCreatedat(): number;
+    setCreatedat(value: number): Hotel;
+    getUpdateat(): number;
+    setUpdateat(value: number): Hotel;
 
     serializeBinary(): Uint8Array;
     toObject(includeInstance?: boolean): Hotel.AsObject;
@@ -105,6 +109,8 @@ export namespace Hotel {
         id: string,
         hotel: string,
         offers: string,
+        createdat: number,
+        updateat: number,
     }
 }
 
@@ -115,6 +121,8 @@ export class HotelCreate extends jspb.Message {
     setHotel(value: string): HotelCreate;
     getOffers(): string;
     setOffers(value: string): HotelCreate;
+    getIspackage(): boolean;
+    setIspackage(value: boolean): HotelCreate;
 
     serializeBinary(): Uint8Array;
     toObject(includeInstance?: boolean): HotelCreate.AsObject;
@@ -131,6 +139,7 @@ export namespace HotelCreate {
         userid: string,
         hotel: string,
         offers: string,
+        ispackage: boolean,
     }
 }
 

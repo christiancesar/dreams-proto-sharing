@@ -802,7 +802,9 @@ proto.hotel.Hotel.toObject = function(includeInstance, msg) {
   var f, obj = {
     id: jspb.Message.getFieldWithDefault(msg, 1, ""),
     hotel: jspb.Message.getFieldWithDefault(msg, 2, ""),
-    offers: jspb.Message.getFieldWithDefault(msg, 3, "")
+    offers: jspb.Message.getFieldWithDefault(msg, 3, ""),
+    createdat: jspb.Message.getFieldWithDefault(msg, 5, 0),
+    updateat: jspb.Message.getFieldWithDefault(msg, 6, 0)
   };
 
   if (includeInstance) {
@@ -851,6 +853,14 @@ proto.hotel.Hotel.deserializeBinaryFromReader = function(msg, reader) {
       var value = /** @type {string} */ (reader.readString());
       msg.setOffers(value);
       break;
+    case 5:
+      var value = /** @type {number} */ (reader.readInt64());
+      msg.setCreatedat(value);
+      break;
+    case 6:
+      var value = /** @type {number} */ (reader.readInt64());
+      msg.setUpdateat(value);
+      break;
     default:
       reader.skipField();
       break;
@@ -898,6 +908,20 @@ proto.hotel.Hotel.serializeBinaryToWriter = function(message, writer) {
   if (f.length > 0) {
     writer.writeString(
       3,
+      f
+    );
+  }
+  f = message.getCreatedat();
+  if (f !== 0) {
+    writer.writeInt64(
+      5,
+      f
+    );
+  }
+  f = message.getUpdateat();
+  if (f !== 0) {
+    writer.writeInt64(
+      6,
       f
     );
   }
@@ -958,6 +982,42 @@ proto.hotel.Hotel.prototype.setOffers = function(value) {
 };
 
 
+/**
+ * optional int64 createdAt = 5;
+ * @return {number}
+ */
+proto.hotel.Hotel.prototype.getCreatedat = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 5, 0));
+};
+
+
+/**
+ * @param {number} value
+ * @return {!proto.hotel.Hotel} returns this
+ */
+proto.hotel.Hotel.prototype.setCreatedat = function(value) {
+  return jspb.Message.setProto3IntField(this, 5, value);
+};
+
+
+/**
+ * optional int64 updateAt = 6;
+ * @return {number}
+ */
+proto.hotel.Hotel.prototype.getUpdateat = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 6, 0));
+};
+
+
+/**
+ * @param {number} value
+ * @return {!proto.hotel.Hotel} returns this
+ */
+proto.hotel.Hotel.prototype.setUpdateat = function(value) {
+  return jspb.Message.setProto3IntField(this, 6, value);
+};
+
+
 
 
 
@@ -992,7 +1052,8 @@ proto.hotel.HotelCreate.toObject = function(includeInstance, msg) {
   var f, obj = {
     userid: jspb.Message.getFieldWithDefault(msg, 1, ""),
     hotel: jspb.Message.getFieldWithDefault(msg, 2, ""),
-    offers: jspb.Message.getFieldWithDefault(msg, 3, "")
+    offers: jspb.Message.getFieldWithDefault(msg, 3, ""),
+    ispackage: jspb.Message.getBooleanFieldWithDefault(msg, 4, false)
   };
 
   if (includeInstance) {
@@ -1041,6 +1102,10 @@ proto.hotel.HotelCreate.deserializeBinaryFromReader = function(msg, reader) {
       var value = /** @type {string} */ (reader.readString());
       msg.setOffers(value);
       break;
+    case 4:
+      var value = /** @type {boolean} */ (reader.readBool());
+      msg.setIspackage(value);
+      break;
     default:
       reader.skipField();
       break;
@@ -1088,6 +1153,13 @@ proto.hotel.HotelCreate.serializeBinaryToWriter = function(message, writer) {
   if (f.length > 0) {
     writer.writeString(
       3,
+      f
+    );
+  }
+  f = message.getIspackage();
+  if (f) {
+    writer.writeBool(
+      4,
       f
     );
   }
@@ -1145,6 +1217,24 @@ proto.hotel.HotelCreate.prototype.getOffers = function() {
  */
 proto.hotel.HotelCreate.prototype.setOffers = function(value) {
   return jspb.Message.setProto3StringField(this, 3, value);
+};
+
+
+/**
+ * optional bool isPackage = 4;
+ * @return {boolean}
+ */
+proto.hotel.HotelCreate.prototype.getIspackage = function() {
+  return /** @type {boolean} */ (jspb.Message.getBooleanFieldWithDefault(this, 4, false));
+};
+
+
+/**
+ * @param {boolean} value
+ * @return {!proto.hotel.HotelCreate} returns this
+ */
+proto.hotel.HotelCreate.prototype.setIspackage = function(value) {
+  return jspb.Message.setProto3BooleanField(this, 4, value);
 };
 
 
