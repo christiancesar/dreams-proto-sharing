@@ -8,28 +8,28 @@ Yarn version:
   1.22.18
 
 Node version: 
-  18.3.0
+  18.4.0
 
 Platform: 
   linux x64
 
 Trace: 
-  Error: https://registry.yarnpkg.com/-/user/org.couchdb.user:christiancesar: failed to authenticate: Could not authenticate christiancesar: bad password
-      at params.callback [as _callback] (/usr/share/yarn/lib/cli.js:66138:18)
-      at self.callback (/usr/share/yarn/lib/cli.js:140883:22)
-      at Request.emit (node:events:527:28)
-      at Request.<anonymous> (/usr/share/yarn/lib/cli.js:141855:10)
-      at Request.emit (node:events:527:28)
-      at IncomingMessage.<anonymous> (/usr/share/yarn/lib/cli.js:141777:12)
-      at Object.onceWrapper (node:events:641:28)
-      at IncomingMessage.emit (node:events:539:35)
-      at endReadableNT (node:internal/streams/readable:1344:12)
-      at process.processTicksAndRejections (node:internal/process/task_queues:82:21)
+  Error: canceled
+      at Interface.<anonymous> (/usr/share/yarn/lib/cli.js:137143:13)
+      at Interface.emit (node:events:537:28)
+      at [_ttyWrite] [as _ttyWrite] (node:internal/readline/interface:1124:18)
+      at ReadStream.onkeypress (node:internal/readline/interface:273:20)
+      at ReadStream.emit (node:events:537:28)
+      at emitKeys (node:internal/readline/utils:358:14)
+      at emitKeys.next (<anonymous>)
+      at ReadStream.onData (node:internal/readline/emitKeypressEvents:64:36)
+      at ReadStream.emit (node:events:537:28)
+      at addChunk (node:internal/streams/readable:324:12)
 
 npm manifest: 
   {
     "name": "dreams-proto-sharing",
-    "version": "1.0.4",
+    "version": "1.0.4a",
     "main": "index.js",
     "license": "MIT",
     "scripts": {

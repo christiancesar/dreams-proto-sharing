@@ -206,7 +206,7 @@ if (goog.DEBUG && !COMPILED) {
  * @constructor
  */
 proto.packagetrip.PackagesResponse = function(opt_data) {
-  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
+  jspb.Message.initialize(this, opt_data, 0, -1, proto.packagetrip.PackagesResponse.repeatedFields_, null);
 };
 goog.inherits(proto.packagetrip.PackagesResponse, jspb.Message);
 if (goog.DEBUG && !COMPILED) {
@@ -2004,6 +2004,13 @@ proto.packagetrip.PackageResponse.prototype.setCreatedat = function(value) {
 
 
 
+/**
+ * List of repeated fields within this message type.
+ * @private {!Array<number>}
+ * @const
+ */
+proto.packagetrip.PackagesResponse.repeatedFields_ = [1];
+
 
 
 if (jspb.Message.GENERATE_TO_OBJECT) {
@@ -2035,7 +2042,8 @@ proto.packagetrip.PackagesResponse.prototype.toObject = function(opt_includeInst
  */
 proto.packagetrip.PackagesResponse.toObject = function(includeInstance, msg) {
   var f, obj = {
-    packageresponse: (f = msg.getPackageresponse()) && proto.packagetrip.PackageResponse.toObject(includeInstance, f)
+    packageresponseList: jspb.Message.toObjectList(msg.getPackageresponseList(),
+    proto.packagetrip.PackageResponse.toObject, includeInstance)
   };
 
   if (includeInstance) {
@@ -2075,7 +2083,7 @@ proto.packagetrip.PackagesResponse.deserializeBinaryFromReader = function(msg, r
     case 1:
       var value = new proto.packagetrip.PackageResponse;
       reader.readMessage(value,proto.packagetrip.PackageResponse.deserializeBinaryFromReader);
-      msg.setPackageresponse(value);
+      msg.addPackageresponse(value);
       break;
     default:
       reader.skipField();
@@ -2106,9 +2114,9 @@ proto.packagetrip.PackagesResponse.prototype.serializeBinary = function() {
  */
 proto.packagetrip.PackagesResponse.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
-  f = message.getPackageresponse();
-  if (f != null) {
-    writer.writeMessage(
+  f = message.getPackageresponseList();
+  if (f.length > 0) {
+    writer.writeRepeatedMessage(
       1,
       f,
       proto.packagetrip.PackageResponse.serializeBinaryToWriter
@@ -2118,39 +2126,40 @@ proto.packagetrip.PackagesResponse.serializeBinaryToWriter = function(message, w
 
 
 /**
- * optional PackageResponse packageResponse = 1;
- * @return {?proto.packagetrip.PackageResponse}
+ * repeated PackageResponse packageResponse = 1;
+ * @return {!Array<!proto.packagetrip.PackageResponse>}
  */
-proto.packagetrip.PackagesResponse.prototype.getPackageresponse = function() {
-  return /** @type{?proto.packagetrip.PackageResponse} */ (
-    jspb.Message.getWrapperField(this, proto.packagetrip.PackageResponse, 1));
+proto.packagetrip.PackagesResponse.prototype.getPackageresponseList = function() {
+  return /** @type{!Array<!proto.packagetrip.PackageResponse>} */ (
+    jspb.Message.getRepeatedWrapperField(this, proto.packagetrip.PackageResponse, 1));
 };
 
 
 /**
- * @param {?proto.packagetrip.PackageResponse|undefined} value
+ * @param {!Array<!proto.packagetrip.PackageResponse>} value
  * @return {!proto.packagetrip.PackagesResponse} returns this
 */
-proto.packagetrip.PackagesResponse.prototype.setPackageresponse = function(value) {
-  return jspb.Message.setWrapperField(this, 1, value);
+proto.packagetrip.PackagesResponse.prototype.setPackageresponseList = function(value) {
+  return jspb.Message.setRepeatedWrapperField(this, 1, value);
 };
 
 
 /**
- * Clears the message field making it undefined.
+ * @param {!proto.packagetrip.PackageResponse=} opt_value
+ * @param {number=} opt_index
+ * @return {!proto.packagetrip.PackageResponse}
+ */
+proto.packagetrip.PackagesResponse.prototype.addPackageresponse = function(opt_value, opt_index) {
+  return jspb.Message.addToRepeatedWrapperField(this, 1, opt_value, proto.packagetrip.PackageResponse, opt_index);
+};
+
+
+/**
+ * Clears the list making it empty but non-null.
  * @return {!proto.packagetrip.PackagesResponse} returns this
  */
-proto.packagetrip.PackagesResponse.prototype.clearPackageresponse = function() {
-  return this.setPackageresponse(undefined);
-};
-
-
-/**
- * Returns whether this field is set.
- * @return {boolean}
- */
-proto.packagetrip.PackagesResponse.prototype.hasPackageresponse = function() {
-  return jspb.Message.getField(this, 1) != null;
+proto.packagetrip.PackagesResponse.prototype.clearPackageresponseList = function() {
+  return this.setPackageresponseList([]);
 };
 
 

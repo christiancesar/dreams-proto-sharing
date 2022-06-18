@@ -246,11 +246,10 @@ export namespace PackageResponse {
 }
 
 export class PackagesResponse extends jspb.Message { 
-
-    hasPackageresponse(): boolean;
-    clearPackageresponse(): void;
-    getPackageresponse(): PackageResponse | undefined;
-    setPackageresponse(value?: PackageResponse): PackagesResponse;
+    clearPackageresponseList(): void;
+    getPackageresponseList(): Array<PackageResponse>;
+    setPackageresponseList(value: Array<PackageResponse>): PackagesResponse;
+    addPackageresponse(value?: PackageResponse, index?: number): PackageResponse;
 
     serializeBinary(): Uint8Array;
     toObject(includeInstance?: boolean): PackagesResponse.AsObject;
@@ -264,7 +263,7 @@ export class PackagesResponse extends jspb.Message {
 
 export namespace PackagesResponse {
     export type AsObject = {
-        packageresponse?: PackageResponse.AsObject,
+        packageresponseList: Array<PackageResponse.AsObject>,
     }
 }
 

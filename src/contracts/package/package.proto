@@ -58,7 +58,7 @@ message PackageResponse {
 }
 
 message PackagesResponse {
-  PackageResponse packageResponse = 1;
+  repeated PackageResponse packageResponse = 1;
 }
 
 message PackagesByUserRequest {
