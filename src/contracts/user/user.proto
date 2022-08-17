@@ -11,6 +11,8 @@ message User {
   string lastName = 4;  
   int64 age = 5;        
   string birthday = 6;   
+  int64 updatedAt = 7;
+  int64 createdAt = 8;
 }
 
 message UserResponse {

@@ -20,6 +20,10 @@ export class User extends jspb.Message {
     setAge(value: number): User;
     getBirthday(): string;
     setBirthday(value: string): User;
+    getUpdatedat(): number;
+    setUpdatedat(value: number): User;
+    getCreatedat(): number;
+    setCreatedat(value: number): User;
 
     serializeBinary(): Uint8Array;
     toObject(includeInstance?: boolean): User.AsObject;
@@ -39,6 +43,8 @@ export namespace User {
         lastname: string,
         age: number,
         birthday: string,
+        updatedat: number,
+        createdat: number,
     }
 }
 

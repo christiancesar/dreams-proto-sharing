@@ -120,7 +120,9 @@ proto.user.User.toObject = function(includeInstance, msg) {
     firstname: jspb.Message.getFieldWithDefault(msg, 3, ""),
     lastname: jspb.Message.getFieldWithDefault(msg, 4, ""),
     age: jspb.Message.getFieldWithDefault(msg, 5, 0),
-    birthday: jspb.Message.getFieldWithDefault(msg, 6, "")
+    birthday: jspb.Message.getFieldWithDefault(msg, 6, ""),
+    updatedat: jspb.Message.getFieldWithDefault(msg, 7, 0),
+    createdat: jspb.Message.getFieldWithDefault(msg, 8, 0)
   };
 
   if (includeInstance) {
@@ -180,6 +182,14 @@ proto.user.User.deserializeBinaryFromReader = function(msg, reader) {
     case 6:
       var value = /** @type {string} */ (reader.readString());
       msg.setBirthday(value);
+      break;
+    case 7:
+      var value = /** @type {number} */ (reader.readInt64());
+      msg.setUpdatedat(value);
+      break;
+    case 8:
+      var value = /** @type {number} */ (reader.readInt64());
+      msg.setCreatedat(value);
       break;
     default:
       reader.skipField();
@@ -249,6 +259,20 @@ proto.user.User.serializeBinaryToWriter = function(message, writer) {
   if (f.length > 0) {
     writer.writeString(
       6,
+      f
+    );
+  }
+  f = message.getUpdatedat();
+  if (f !== 0) {
+    writer.writeInt64(
+      7,
+      f
+    );
+  }
+  f = message.getCreatedat();
+  if (f !== 0) {
+    writer.writeInt64(
+      8,
       f
     );
   }
@@ -360,6 +384,42 @@ proto.user.User.prototype.getBirthday = function() {
  */
 proto.user.User.prototype.setBirthday = function(value) {
   return jspb.Message.setProto3StringField(this, 6, value);
+};
+
+
+/**
+ * optional int64 updatedAt = 7;
+ * @return {number}
+ */
+proto.user.User.prototype.getUpdatedat = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 7, 0));
+};
+
+
+/**
+ * @param {number} value
+ * @return {!proto.user.User} returns this
+ */
+proto.user.User.prototype.setUpdatedat = function(value) {
+  return jspb.Message.setProto3IntField(this, 7, value);
+};
+
+
+/**
+ * optional int64 createdAt = 8;
+ * @return {number}
+ */
+proto.user.User.prototype.getCreatedat = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 8, 0));
+};
+
+
+/**
+ * @param {number} value
+ * @return {!proto.user.User} returns this
+ */
+proto.user.User.prototype.setCreatedat = function(value) {
+  return jspb.Message.setProto3IntField(this, 8, value);
 };
 
 
