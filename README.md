@@ -68,15 +68,19 @@ Os plugins remotos precisam de acesso à internet.
 
 ## Publicação
 
-1. Altere o `.proto` e rode `npm run compile`, `npm run lint` e `npm run breaking`.
-2. Escolha a versão pelas regras de semver acima e ajuste o `package.json` (`npm version <versão> --no-git-tag-version`).
-3. Confira o conteúdo com `npm pack --dry-run`. Só `src/contracts` e os READMEs entram no pacote.
-4. Confirme o login com `npm whoami` e publique com `npm publish`.
-5. Crie a tag no git (`git tag v<versão>`) e registre a mudança neste README.
+A publicação é automática. Cada merge na `main` roda o workflow `.github/workflows/release.yml`, que usa o semantic-release e publica no npm com provenance.
 
-O npm não permite sobrescrever uma versão publicada. Se algo estiver errado, publique uma versão nova.
+- Só geram release os commits `feat`, `fix`, `perf`, `refactor`, `revert` e os marcados como breaking (`!` ou `BREAKING CHANGE:`). Todos geram **minor**. Não há major nem patch automáticos.
+- `docs`, `chore`, `ci`, `test` e `style` não geram versão.
+- O `CHANGELOG.md` e o `package.json` são atualizados pelo próprio workflow, com commit `[skip ci]`.
+- Os contratos gerados (`src/contracts` e `esm/`) precisam estar em sincronia com os `.proto`. O workflow `ci.yml` falha se não estiverem.
+- Para publicar, é preciso o secret `NPM_TOKEN` no repositório.
+
+O npm não permite sobrescrever uma versão publicada. Se algo estiver errado, faça um novo commit na `main`.
 
 ## Histórico de versões
+
+O histórico completo está em [CHANGELOG.md](CHANGELOG.md).
 
 | Versão | Mudança |
 |---|---|

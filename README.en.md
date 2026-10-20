@@ -68,15 +68,19 @@ Remote plugins need internet access.
 
 ## Publishing
 
-1. Change the `.proto` and run `npm run compile`, `npm run lint` and `npm run breaking`.
-2. Choose the version by the semver rules above and update `package.json` (`npm version <version> --no-git-tag-version`).
-3. Check the contents with `npm pack --dry-run`. Only `src/contracts` and the READMEs go into the package.
-4. Confirm the login with `npm whoami` and publish with `npm publish`.
-5. Create the git tag (`git tag v<version>`) and record the change in this README.
+Publishing is automatic. Every merge to `main` runs `.github/workflows/release.yml`, which uses semantic-release and publishes to npm with provenance.
 
-npm does not allow overwriting a published version. If something is wrong, publish a new version.
+- Only `feat`, `fix`, `perf`, `refactor`, `revert` and breaking commits (`!` or `BREAKING CHANGE:`) cut a release. All of them produce a **minor** version. There are no automatic major or patch releases.
+- `docs`, `chore`, `ci`, `test` and `style` commits do not produce a version.
+- `CHANGELOG.md` and `package.json` are updated by the workflow itself, in a commit marked `[skip ci]`.
+- The generated contracts (`src/contracts` and `esm/`) must match the `.proto` files. The `ci.yml` workflow fails otherwise.
+- Publishing requires the `NPM_TOKEN` secret in the repository.
+
+npm does not allow overwriting a published version. If something is wrong, make a new commit on `main`.
 
 ## Version history
+
+The full history is in [CHANGELOG.md](CHANGELOG.md).
 
 | Version | Change |
 |---|---|
