@@ -26,7 +26,7 @@ jobs:
           fetch-depth: 0     # o semantic-release lê todas as tags
       - uses: actions/setup-node@v4
         with:
-          node-version: 24
+          node-version: lts/*
           cache: npm
           registry-url: https://registry.npmjs.org
       - run: npm ci
