@@ -13,6 +13,7 @@ src/contracts/
 ├── flight/   flight.proto, flight_pb.js/.d.ts, flight_grpc_pb.js/.d.ts
 ├── hotel/    hotel.proto, hotel_pb.js/.d.ts, hotel_grpc_pb.js/.d.ts
 ├── package/  package.proto, package_pb.js/.d.ts, package_grpc_pb.js/.d.ts
+├── health/   health.proto, health_pb.js/.d.ts, health_grpc_pb.js/.d.ts
 └── user/     user.proto, user_pb.js/.d.ts, user_grpc_pb.js/.d.ts
 ```
 

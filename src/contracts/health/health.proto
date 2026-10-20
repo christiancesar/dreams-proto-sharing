@@ -1,0 +1,28 @@
+syntax = "proto3";
+
+package dreams.health.v1;
+
+// Health check igual em todos os microsserviços. Cada serviço expõe Check por gRPC.
+service Health {
+  rpc Check(HealthCheckRequest) returns (HealthReport);
+}
+
+message HealthCheckRequest {}
+
+// ok: tudo funcionando. degraded: parte dos recursos com problema, o serviço segue atendendo.
+// down: o serviço não consegue atender.
+message HealthReport {
+  string status = 1;
+  string service = 2;
+  string timestamp = 3;
+  double uptime_seconds = 4;
+  double response_time_ms = 5;
+  repeated CheckResult checks = 6;
+}
+
+message CheckResult {
+  string name = 1;
+  string status = 2;
+  double response_time_ms = 3;
+  string details = 4;
+}
