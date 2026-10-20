@@ -21,14 +21,13 @@ jobs:
       pull-requests: write   # comentários em PRs liberados
       id-token: write        # provenance do npm via OIDC
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
         with:
           fetch-depth: 0     # o semantic-release lê todas as tags
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v7
         with:
-          node-version: lts/*
+          node-version: 24
           cache: npm
-          registry-url: https://registry.npmjs.org
       - run: npm ci
       - run: npm run build
       - run: npm run test:smoke
