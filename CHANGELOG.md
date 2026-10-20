@@ -1,3 +1,10 @@
+# [2.2.0](https://github.com/christiancesar/dreams-proto-sharing/compare/v2.1.0...v2.2.0) (2026-10-20)
+
+
+### Features
+
+* **health:** adiciona contrato Health com relatório de saúde ([cad1b9a](https://github.com/christiancesar/dreams-proto-sharing/commit/cad1b9a6fb49611054b17dfb417a1d4549b24c27))
+
 # [2.1.0](https://github.com/christiancesar/dreams-proto-sharing/compare/v2.0.0...v2.1.0) (2026-10-20)
 
 
