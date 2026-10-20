@@ -2,9 +2,24 @@
   "name": "dreams-proto-sharing",
   "version": "2.0.0",
   "main": "index.js",
+  "exports": {
+    "./src/contracts/*": {
+      "import": {
+        "types": "./esm/*",
+        "default": "./esm/*"
+      },
+      "require": {
+        "types": "./src/contracts/*",
+        "default": "./src/contracts/*"
+      },
+      "default": "./src/contracts/*"
+    },
+    "./package.json": "./package.json"
+  },
   "license": "MIT",
   "scripts": {
-    "compile": "buf generate",
+    "compile": "buf generate && npm run build",
+    "build": "node scripts/build-esm.mjs",
     "lint": "buf lint",
     "breaking": "buf breaking --against '.git#branch=main,subdir=src/contracts'"
   },
@@ -20,6 +35,7 @@
   },
   "files": [
     "src/contracts",
+    "esm",
     "README.md",
     "README.en.md"
   ],
