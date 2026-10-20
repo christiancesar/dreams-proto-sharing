@@ -13,7 +13,7 @@
 
 var jspb = require('google-protobuf');
 var goog = jspb;
-var global = Function('return this')();
+var global = globalThis;
 
 var google_protobuf_empty_pb = require('google-protobuf/google/protobuf/empty_pb.js');
 goog.object.extend(proto, google_protobuf_empty_pb);
@@ -115,14 +115,14 @@ proto.user.User.prototype.toObject = function(opt_includeInstance) {
  */
 proto.user.User.toObject = function(includeInstance, msg) {
   var f, obj = {
-    id: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    email: jspb.Message.getFieldWithDefault(msg, 2, ""),
-    firstname: jspb.Message.getFieldWithDefault(msg, 3, ""),
-    lastname: jspb.Message.getFieldWithDefault(msg, 4, ""),
-    age: jspb.Message.getFieldWithDefault(msg, 5, 0),
-    birthday: jspb.Message.getFieldWithDefault(msg, 6, ""),
-    updatedat: jspb.Message.getFieldWithDefault(msg, 7, 0),
-    createdat: jspb.Message.getFieldWithDefault(msg, 8, 0)
+id: jspb.Message.getFieldWithDefault(msg, 1, ""),
+email: jspb.Message.getFieldWithDefault(msg, 2, ""),
+firstname: jspb.Message.getFieldWithDefault(msg, 3, ""),
+lastname: jspb.Message.getFieldWithDefault(msg, 4, ""),
+age: jspb.Message.getFieldWithDefault(msg, 5, 0),
+birthday: jspb.Message.getFieldWithDefault(msg, 6, ""),
+updatedat: jspb.Message.getFieldWithDefault(msg, 7, 0),
+createdat: jspb.Message.getFieldWithDefault(msg, 8, 0)
   };
 
   if (includeInstance) {
@@ -135,7 +135,7 @@ proto.user.User.toObject = function(includeInstance, msg) {
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.user.User}
  */
 proto.user.User.deserializeBinary = function(bytes) {
@@ -160,19 +160,19 @@ proto.user.User.deserializeBinaryFromReader = function(msg, reader) {
     var field = reader.getFieldNumber();
     switch (field) {
     case 1:
-      var value = /** @type {string} */ (reader.readString());
+      var value = /** @type {string} */ (reader.readStringRequireUtf8());
       msg.setId(value);
       break;
     case 2:
-      var value = /** @type {string} */ (reader.readString());
+      var value = /** @type {string} */ (reader.readStringRequireUtf8());
       msg.setEmail(value);
       break;
     case 3:
-      var value = /** @type {string} */ (reader.readString());
+      var value = /** @type {string} */ (reader.readStringRequireUtf8());
       msg.setFirstname(value);
       break;
     case 4:
-      var value = /** @type {string} */ (reader.readString());
+      var value = /** @type {string} */ (reader.readStringRequireUtf8());
       msg.setLastname(value);
       break;
     case 5:
@@ -180,7 +180,7 @@ proto.user.User.deserializeBinaryFromReader = function(msg, reader) {
       msg.setAge(value);
       break;
     case 6:
-      var value = /** @type {string} */ (reader.readString());
+      var value = /** @type {string} */ (reader.readStringRequireUtf8());
       msg.setBirthday(value);
       break;
     case 7:
@@ -462,7 +462,7 @@ proto.user.UserResponse.prototype.toObject = function(opt_includeInstance) {
  */
 proto.user.UserResponse.toObject = function(includeInstance, msg) {
   var f, obj = {
-    userList: jspb.Message.toObjectList(msg.getUserList(),
+userList: jspb.Message.toObjectList(msg.getUserList(),
     proto.user.User.toObject, includeInstance)
   };
 
@@ -476,7 +476,7 @@ proto.user.UserResponse.toObject = function(includeInstance, msg) {
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.user.UserResponse}
  */
 proto.user.UserResponse.deserializeBinary = function(bytes) {
@@ -615,7 +615,7 @@ proto.user.UserRequest.prototype.toObject = function(opt_includeInstance) {
  */
 proto.user.UserRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    user: (f = msg.getUser()) && proto.user.User.toObject(includeInstance, f)
+user: (f = msg.getUser()) && proto.user.User.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -628,7 +628,7 @@ proto.user.UserRequest.toObject = function(includeInstance, msg) {
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.user.UserRequest}
  */
 proto.user.UserRequest.deserializeBinary = function(bytes) {

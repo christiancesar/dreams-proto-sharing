@@ -121,4 +121,4 @@ listPackageByUser: {
   },
 };
 
-exports.PackagesClient = grpc.makeGenericClientConstructor(PackagesService);
+exports.PackagesClient = grpc.makeGenericClientConstructor(PackagesService, 'Packages');

@@ -152,4 +152,4 @@ var FlightsService = exports.FlightsService = {
   },
 };
 
-exports.FlightsClient = grpc.makeGenericClientConstructor(FlightsService);
+exports.FlightsClient = grpc.makeGenericClientConstructor(FlightsService, 'Flights');

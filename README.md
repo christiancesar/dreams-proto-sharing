@@ -1,18 +1,12 @@
-# Dreams: Proto Sharing
+# dreams-proto-sharing
 
-Pacote com os contratos gRPC (arquivos `.proto`) usados pelos microsserviços do projeto Dreams. Ele é publicado no npm como `dreams-proto-sharing` e é o que mantém cliente e servidor com os mesmos tipos e métodos.
+Pacote com os contratos gRPC (arquivos `.proto`) e o código gerado a partir deles, usados pelos microsserviços do projeto Dreams. Ele é publicado no npm como `dreams-proto-sharing` e mantém cliente e servidor com os mesmos tipos e métodos.
 
-Faz parte do TCC [Arquitetura de Microsserviços: Projetos, Padrões e Princípios](https://github.com/christiancesar/dreams-origins/blob/main/docs/TCC-Christian-Cesar-2022-Arquitetura-de-Microsservicos.pdf) (UFR, 2022). Os microsserviços que consomem este pacote estão em [dreams-project-microservices](https://github.com/christiancesar/dreams-project-microservices).
+Faz parte do TCC [Arquitetura de Microsserviços: Projetos, Padrões e Princípios](https://github.com/christiancesar/dreams-origins/blob/main/docs/TCC-Christian-Cesar-2022-Arquitetura-de-Microsservicos.pdf) (UFR, 2022). Os microsserviços que consomem o pacote estão em [dreams-project-microservices](https://github.com/christiancesar/dreams-project-microservices).
 
 Versão em inglês: [README.en.md](README.en.md)
 
-## Por que um pacote separado
-
-No TCC, os contratos foram centralizados para evitar cópias divergentes entre serviços. A contrapartida é que uma mudança precisa ser combinada com as equipes que consomem o contrato. Por isso, a alteração passa por este repositório e só depois é publicada.
-
 ## Contratos
-
-Cada domínio tem um `.proto` e os arquivos gerados a partir dele:
 
 ```
 src/contracts/
@@ -22,40 +16,74 @@ src/contracts/
 └── user/     user.proto, user_pb.js/.d.ts, user_grpc_pb.js/.d.ts
 ```
 
-Os arquivos `*_pb` contêm as mensagens e os `*_grpc_pb` contêm os serviços (`UsersService`, `FlightsService` e assim por diante), incluindo as tipagens TypeScript.
+- `*_pb`: mensagens (classes com getters e setters, `toObject`, serialização).
+- `*_grpc_pb`: stubs de cliente (`UsersClient`, `FlightsClient`...) e definição dos serviços (`UsersService`...), com as interfaces `IUsersServer` etc.
 
-## Como usar
-
-Instale o pacote no serviço que vai consumir os contratos:
+## Instalação
 
 ```bash
-yarn add dreams-proto-sharing
+npm install dreams-proto-sharing
 ```
 
-Importe o arquivo do domínio que precisa. Por exemplo, para o cliente de voos:
+O código gerado precisa de dois pacotes no projeto que consome. Eles são dependências do pacote, então o npm já os instala, mas o projeto deve usar a mesma versão do runtime:
+
+- `google-protobuf` 4.x (runtime do código gerado)
+- `@grpc/grpc-js` 1.x (cliente e servidor gRPC)
+
+Importe sempre pelo caminho do arquivo. O campo `main` do `package.json` aponta para um `index.js` que não existe no pacote:
 
 ```ts
-import { FlightsClient } from 'dreams-proto-sharing/src/contracts/flight/flight_grpc_pb';
-import { FlightOffersRequest } from 'dreams-proto-sharing/src/contracts/flight/flight_pb';
+import { UsersClient } from 'dreams-proto-sharing/src/contracts/user/user_grpc_pb';
+import { UserRequest, User } from 'dreams-proto-sharing/src/contracts/user/user_pb';
 ```
 
-O campo `main` do `package.json` aponta para `index.js`, que não existe no repositório. Importe sempre pelo caminho do arquivo, como acima.
+## Versões
 
-## Como recompilar
+O pacote segue semver:
 
-Só é preciso se você alterar um `.proto`:
+- **Major** (`2.0.0`): mudança que quebra quem consome. A versão 2 exige `google-protobuf` 4.x. Código gerado pela versão 1 continua rodando em `google-protobuf` 4, mas código gerado pela versão 2 não roda em 3.x.
+- **Minor**: campo ou método novo, compatível com quem já consome.
+- **Patch**: correção sem mudança de API.
+
+Projetos que usam `^1.x` continuam na linha 1 até migrarem explicitamente.
+
+## Desenvolvimento
+
+Pré-requisitos: Node.js LTS e npm.
 
 ```bash
-yarn install
-yarn compile
+npm install
+npm run compile   # gera os arquivos em src/contracts a partir dos .proto
+npm run lint      # buf lint, com as exceções documentadas em buf.yaml
+npm run breaking  # compara os contratos com a branch main e falha se houver quebra
 ```
 
-O script `compile` roda o `grpc_tools_node_protoc` duas vezes: uma para gerar o JavaScript e os stubs gRPC, outra com o plugin `protoc-gen-ts` para gerar as tipagens. Ele usa o glob `./src/contracts/**/*.proto`. Em shells sem `globstar`, o padrão `**` pode não varrer subpastas, então confira se todos os domínios foram gerados.
+Os arquivos são gerados por `buf generate`, configurado em `buf.gen.yaml`:
+
+- JavaScript das mensagens: plugin oficial `protocolbuffers/js` (remoto).
+- Stubs gRPC: plugin oficial `grpc/node` com `grpc_js` (remoto).
+- Tipagens `.d.ts`: `protoc-gen-ts` do `grpc_tools_node_protoc_ts`. Esse é o único componente sem substituto mantido, e o projeto ainda o usa por causa do formato de classes que os consumidores dependem.
+
+Os plugins remotos precisam de acesso à internet.
 
 ## Publicação
 
-O repositório não documenta o processo de publicação. A versão atual é `1.0.5-a`. Depois de alterar um contrato, atualize a versão no `package.json`, recompile, e publique no npm com a conta do projeto.
+1. Altere o `.proto` e rode `npm run compile`, `npm run lint` e `npm run breaking`.
+2. Escolha a versão pelas regras de semver acima e ajuste o `package.json` (`npm version <versão> --no-git-tag-version`).
+3. Confira o conteúdo com `npm pack --dry-run`. Só `src/contracts` e os READMEs entram no pacote.
+4. Confirme o login com `npm whoami` e publique com `npm publish`.
+5. Crie a tag no git (`git tag v<versão>`) e registre a mudança neste README.
 
-## Observação
+O npm não permite sobrescrever uma versão publicada. Se algo estiver errado, publique uma versão nova.
 
-Os arquivos gerados estão versionados junto com os `.proto`. Assim o pacote funciona para quem o instala, sem exigir o `grpc-tools` no consumidor.
+## Histórico de versões
+
+| Versão | Mudança |
+|---|---|
+| 2.0.0 | Código gerado com `buf` e plugins oficiais. Exige `google-protobuf` 4.x. `files` restringe o pacote a `src/contracts` e READMEs. |
+| 1.0.33 | Última versão 1.x publicada. Não tem histórico correspondente neste repositório. |
+| 1.0.5-a | Versão do repositório antes da migração para `buf`. |
+
+## Licença
+
+MIT

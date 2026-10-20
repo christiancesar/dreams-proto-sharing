@@ -152,4 +152,4 @@ var HotelsService = exports.HotelsService = {
   },
 };
 
-exports.HotelsClient = grpc.makeGenericClientConstructor(HotelsService);
+exports.HotelsClient = grpc.makeGenericClientConstructor(HotelsService, 'Hotels');
