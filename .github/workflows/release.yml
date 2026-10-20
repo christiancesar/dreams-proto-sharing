@@ -1,0 +1,39 @@
+name: Release
+
+on:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: release
+  cancel-in-progress: false
+
+jobs:
+  release:
+    name: Publica versão minor no npm
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write        # commit do CHANGELOG/package.json e tag
+      issues: write          # comentários em issues liberadas
+      pull-requests: write   # comentários em PRs liberados
+      id-token: write        # provenance do npm via OIDC
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0     # o semantic-release lê todas as tags
+      - uses: actions/setup-node@v4
+        with:
+          node-version: lts/*
+          cache: npm
+          registry-url: https://registry.npmjs.org
+      - run: npm ci
+      - run: npm run build
+      - run: npm run test:smoke
+      - run: npx semantic-release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+          NPM_CONFIG_PROVENANCE: "true"

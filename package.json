@@ -2,15 +2,38 @@
   "name": "dreams-proto-sharing",
   "version": "2.0.0",
   "main": "index.js",
+  "exports": {
+    "./src/contracts/*": {
+      "import": {
+        "types": "./esm/*",
+        "default": "./esm/*"
+      },
+      "require": {
+        "types": "./src/contracts/*",
+        "default": "./src/contracts/*"
+      },
+      "default": "./src/contracts/*"
+    },
+    "./package.json": "./package.json"
+  },
   "license": "MIT",
   "scripts": {
-    "compile": "buf generate",
+    "compile": "buf generate && npm run build",
+    "build": "node scripts/build-esm.mjs",
     "lint": "buf lint",
-    "breaking": "buf breaking --against '.git#branch=main,subdir=src/contracts'"
+    "breaking": "buf breaking --against '.git#branch=main,subdir=src/contracts'",
+    "test:smoke": "node scripts/smoke-test.mjs"
   },
   "devDependencies": {
     "@bufbuild/buf": "^1.74.0",
+    "@semantic-release/changelog": "^7.0.0",
+    "@semantic-release/commit-analyzer": "^13.0.1",
+    "@semantic-release/git": "^11.0.1",
+    "@semantic-release/github": "^12.0.10",
+    "@semantic-release/npm": "^13.2.0",
+    "@semantic-release/release-notes-generator": "^14.1.1",
     "grpc_tools_node_protoc_ts": "^5.3.3",
+    "semantic-release": "^25.0.9",
     "typescript": "^5.9.3"
   },
   "dependencies": {
@@ -20,6 +43,7 @@
   },
   "files": [
     "src/contracts",
+    "esm",
     "README.md",
     "README.en.md"
   ],
