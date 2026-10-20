@@ -13,7 +13,7 @@
 
 var jspb = require('google-protobuf');
 var goog = jspb;
-var global = Function('return this')();
+var global = globalThis;
 
 var google_protobuf_empty_pb = require('google-protobuf/google/protobuf/empty_pb.js');
 goog.object.extend(proto, google_protobuf_empty_pb);
@@ -269,11 +269,11 @@ proto.hotel.HotelOffersSearch.prototype.toObject = function(opt_includeInstance)
  */
 proto.hotel.HotelOffersSearch.toObject = function(includeInstance, msg) {
   var f, obj = {
-    citycode: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    checkindate: jspb.Message.getFieldWithDefault(msg, 2, ""),
-    checkoutdate: jspb.Message.getFieldWithDefault(msg, 3, ""),
-    roomquantity: jspb.Message.getFieldWithDefault(msg, 4, 0),
-    adults: jspb.Message.getFieldWithDefault(msg, 5, 0)
+citycode: jspb.Message.getFieldWithDefault(msg, 1, ""),
+checkindate: jspb.Message.getFieldWithDefault(msg, 2, ""),
+checkoutdate: jspb.Message.getFieldWithDefault(msg, 3, ""),
+roomquantity: jspb.Message.getFieldWithDefault(msg, 4, 0),
+adults: jspb.Message.getFieldWithDefault(msg, 5, 0)
   };
 
   if (includeInstance) {
@@ -286,7 +286,7 @@ proto.hotel.HotelOffersSearch.toObject = function(includeInstance, msg) {
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.hotel.HotelOffersSearch}
  */
 proto.hotel.HotelOffersSearch.deserializeBinary = function(bytes) {
@@ -311,15 +311,15 @@ proto.hotel.HotelOffersSearch.deserializeBinaryFromReader = function(msg, reader
     var field = reader.getFieldNumber();
     switch (field) {
     case 1:
-      var value = /** @type {string} */ (reader.readString());
+      var value = /** @type {string} */ (reader.readStringRequireUtf8());
       msg.setCitycode(value);
       break;
     case 2:
-      var value = /** @type {string} */ (reader.readString());
+      var value = /** @type {string} */ (reader.readStringRequireUtf8());
       msg.setCheckindate(value);
       break;
     case 3:
-      var value = /** @type {string} */ (reader.readString());
+      var value = /** @type {string} */ (reader.readStringRequireUtf8());
       msg.setCheckoutdate(value);
       break;
     case 4:
@@ -519,7 +519,7 @@ proto.hotel.HotelOffersRequest.prototype.toObject = function(opt_includeInstance
  */
 proto.hotel.HotelOffersRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    hotelofferssearch: (f = msg.getHotelofferssearch()) && proto.hotel.HotelOffersSearch.toObject(includeInstance, f)
+hotelofferssearch: (f = msg.getHotelofferssearch()) && proto.hotel.HotelOffersSearch.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -532,7 +532,7 @@ proto.hotel.HotelOffersRequest.toObject = function(includeInstance, msg) {
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.hotel.HotelOffersRequest}
  */
 proto.hotel.HotelOffersRequest.deserializeBinary = function(bytes) {
@@ -670,7 +670,7 @@ proto.hotel.HotelOffersResponse.prototype.toObject = function(opt_includeInstanc
  */
 proto.hotel.HotelOffersResponse.toObject = function(includeInstance, msg) {
   var f, obj = {
-    hoteloffers: jspb.Message.getFieldWithDefault(msg, 1, "")
+hoteloffers: jspb.Message.getFieldWithDefault(msg, 1, "")
   };
 
   if (includeInstance) {
@@ -683,7 +683,7 @@ proto.hotel.HotelOffersResponse.toObject = function(includeInstance, msg) {
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.hotel.HotelOffersResponse}
  */
 proto.hotel.HotelOffersResponse.deserializeBinary = function(bytes) {
@@ -708,7 +708,7 @@ proto.hotel.HotelOffersResponse.deserializeBinaryFromReader = function(msg, read
     var field = reader.getFieldNumber();
     switch (field) {
     case 1:
-      var value = /** @type {string} */ (reader.readString());
+      var value = /** @type {string} */ (reader.readStringRequireUtf8());
       msg.setHoteloffers(value);
       break;
     default:
@@ -800,11 +800,11 @@ proto.hotel.Hotel.prototype.toObject = function(opt_includeInstance) {
  */
 proto.hotel.Hotel.toObject = function(includeInstance, msg) {
   var f, obj = {
-    id: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    hotel: jspb.Message.getFieldWithDefault(msg, 2, ""),
-    offers: jspb.Message.getFieldWithDefault(msg, 3, ""),
-    createdat: jspb.Message.getFieldWithDefault(msg, 5, 0),
-    updateat: jspb.Message.getFieldWithDefault(msg, 6, 0)
+id: jspb.Message.getFieldWithDefault(msg, 1, ""),
+hotel: jspb.Message.getFieldWithDefault(msg, 2, ""),
+offers: jspb.Message.getFieldWithDefault(msg, 3, ""),
+createdat: jspb.Message.getFieldWithDefault(msg, 5, 0),
+updateat: jspb.Message.getFieldWithDefault(msg, 6, 0)
   };
 
   if (includeInstance) {
@@ -817,7 +817,7 @@ proto.hotel.Hotel.toObject = function(includeInstance, msg) {
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.hotel.Hotel}
  */
 proto.hotel.Hotel.deserializeBinary = function(bytes) {
@@ -842,15 +842,15 @@ proto.hotel.Hotel.deserializeBinaryFromReader = function(msg, reader) {
     var field = reader.getFieldNumber();
     switch (field) {
     case 1:
-      var value = /** @type {string} */ (reader.readString());
+      var value = /** @type {string} */ (reader.readStringRequireUtf8());
       msg.setId(value);
       break;
     case 2:
-      var value = /** @type {string} */ (reader.readString());
+      var value = /** @type {string} */ (reader.readStringRequireUtf8());
       msg.setHotel(value);
       break;
     case 3:
-      var value = /** @type {string} */ (reader.readString());
+      var value = /** @type {string} */ (reader.readStringRequireUtf8());
       msg.setOffers(value);
       break;
     case 5:
@@ -1050,10 +1050,10 @@ proto.hotel.HotelCreate.prototype.toObject = function(opt_includeInstance) {
  */
 proto.hotel.HotelCreate.toObject = function(includeInstance, msg) {
   var f, obj = {
-    userid: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    hotel: jspb.Message.getFieldWithDefault(msg, 2, ""),
-    offers: jspb.Message.getFieldWithDefault(msg, 3, ""),
-    ispackage: jspb.Message.getBooleanFieldWithDefault(msg, 4, false)
+userid: jspb.Message.getFieldWithDefault(msg, 1, ""),
+hotel: jspb.Message.getFieldWithDefault(msg, 2, ""),
+offers: jspb.Message.getFieldWithDefault(msg, 3, ""),
+ispackage: jspb.Message.getBooleanFieldWithDefault(msg, 4, false)
   };
 
   if (includeInstance) {
@@ -1066,7 +1066,7 @@ proto.hotel.HotelCreate.toObject = function(includeInstance, msg) {
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.hotel.HotelCreate}
  */
 proto.hotel.HotelCreate.deserializeBinary = function(bytes) {
@@ -1091,15 +1091,15 @@ proto.hotel.HotelCreate.deserializeBinaryFromReader = function(msg, reader) {
     var field = reader.getFieldNumber();
     switch (field) {
     case 1:
-      var value = /** @type {string} */ (reader.readString());
+      var value = /** @type {string} */ (reader.readStringRequireUtf8());
       msg.setUserid(value);
       break;
     case 2:
-      var value = /** @type {string} */ (reader.readString());
+      var value = /** @type {string} */ (reader.readStringRequireUtf8());
       msg.setHotel(value);
       break;
     case 3:
-      var value = /** @type {string} */ (reader.readString());
+      var value = /** @type {string} */ (reader.readStringRequireUtf8());
       msg.setOffers(value);
       break;
     case 4:
@@ -1270,7 +1270,7 @@ proto.hotel.HotelCreateRequest.prototype.toObject = function(opt_includeInstance
  */
 proto.hotel.HotelCreateRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    hotelcreate: (f = msg.getHotelcreate()) && proto.hotel.HotelCreate.toObject(includeInstance, f)
+hotelcreate: (f = msg.getHotelcreate()) && proto.hotel.HotelCreate.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -1283,7 +1283,7 @@ proto.hotel.HotelCreateRequest.toObject = function(includeInstance, msg) {
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.hotel.HotelCreateRequest}
  */
 proto.hotel.HotelCreateRequest.deserializeBinary = function(bytes) {
@@ -1421,7 +1421,7 @@ proto.hotel.HotelResponse.prototype.toObject = function(opt_includeInstance) {
  */
 proto.hotel.HotelResponse.toObject = function(includeInstance, msg) {
   var f, obj = {
-    hotel: (f = msg.getHotel()) && proto.hotel.Hotel.toObject(includeInstance, f)
+hotel: (f = msg.getHotel()) && proto.hotel.Hotel.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -1434,7 +1434,7 @@ proto.hotel.HotelResponse.toObject = function(includeInstance, msg) {
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.hotel.HotelResponse}
  */
 proto.hotel.HotelResponse.deserializeBinary = function(bytes) {
@@ -1579,7 +1579,7 @@ proto.hotel.HotelListResponse.prototype.toObject = function(opt_includeInstance)
  */
 proto.hotel.HotelListResponse.toObject = function(includeInstance, msg) {
   var f, obj = {
-    hotelList: jspb.Message.toObjectList(msg.getHotelList(),
+hotelList: jspb.Message.toObjectList(msg.getHotelList(),
     proto.hotel.Hotel.toObject, includeInstance)
   };
 
@@ -1593,7 +1593,7 @@ proto.hotel.HotelListResponse.toObject = function(includeInstance, msg) {
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.hotel.HotelListResponse}
  */
 proto.hotel.HotelListResponse.deserializeBinary = function(bytes) {
@@ -1732,7 +1732,7 @@ proto.hotel.HotelShowRequest.prototype.toObject = function(opt_includeInstance) 
  */
 proto.hotel.HotelShowRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    id: jspb.Message.getFieldWithDefault(msg, 1, "")
+id: jspb.Message.getFieldWithDefault(msg, 1, "")
   };
 
   if (includeInstance) {
@@ -1745,7 +1745,7 @@ proto.hotel.HotelShowRequest.toObject = function(includeInstance, msg) {
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.hotel.HotelShowRequest}
  */
 proto.hotel.HotelShowRequest.deserializeBinary = function(bytes) {
@@ -1770,7 +1770,7 @@ proto.hotel.HotelShowRequest.deserializeBinaryFromReader = function(msg, reader)
     var field = reader.getFieldNumber();
     switch (field) {
     case 1:
-      var value = /** @type {string} */ (reader.readString());
+      var value = /** @type {string} */ (reader.readStringRequireUtf8());
       msg.setId(value);
       break;
     default:
@@ -1862,7 +1862,7 @@ proto.hotel.HotelsByUserRequest.prototype.toObject = function(opt_includeInstanc
  */
 proto.hotel.HotelsByUserRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    userid: jspb.Message.getFieldWithDefault(msg, 1, "")
+userid: jspb.Message.getFieldWithDefault(msg, 1, "")
   };
 
   if (includeInstance) {
@@ -1875,7 +1875,7 @@ proto.hotel.HotelsByUserRequest.toObject = function(includeInstance, msg) {
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.hotel.HotelsByUserRequest}
  */
 proto.hotel.HotelsByUserRequest.deserializeBinary = function(bytes) {
@@ -1900,7 +1900,7 @@ proto.hotel.HotelsByUserRequest.deserializeBinaryFromReader = function(msg, read
     var field = reader.getFieldNumber();
     switch (field) {
     case 1:
-      var value = /** @type {string} */ (reader.readString());
+      var value = /** @type {string} */ (reader.readStringRequireUtf8());
       msg.setUserid(value);
       break;
     default:

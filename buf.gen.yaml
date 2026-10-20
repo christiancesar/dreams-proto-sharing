@@ -1,0 +1,16 @@
+version: v2
+managed:
+  enabled: false
+plugins:
+  # Mensagens JavaScript (protoc-gen-js oficial do Google)
+  - remote: buf.build/protocolbuffers/js
+    out: src/contracts
+    opt: import_style=commonjs,binary
+  # Stubs gRPC (plugin oficial do grpc-node), usando @grpc/grpc-js
+  - remote: buf.build/grpc/node
+    out: src/contracts
+    opt: grpc_js
+  # Tipagens .d.ts (ainda pelo grpc_tools_node_protoc_ts, parado desde 2023)
+  - local: ./node_modules/.bin/protoc-gen-ts
+    out: src/contracts
+    opt: grpc_js

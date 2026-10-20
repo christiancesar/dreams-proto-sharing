@@ -13,7 +13,7 @@
 
 var jspb = require('google-protobuf');
 var goog = jspb;
-var global = Function('return this')();
+var global = globalThis;
 
 var google_protobuf_empty_pb = require('google-protobuf/google/protobuf/empty_pb.js');
 goog.object.extend(proto, google_protobuf_empty_pb);
@@ -269,15 +269,15 @@ proto.packagetrip.PackageSearch.prototype.toObject = function(opt_includeInstanc
  */
 proto.packagetrip.PackageSearch.toObject = function(includeInstance, msg) {
   var f, obj = {
-    originlocationcode: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    destinationlocationcode: jspb.Message.getFieldWithDefault(msg, 2, ""),
-    departuredate: jspb.Message.getFieldWithDefault(msg, 3, ""),
-    returndate: jspb.Message.getFieldWithDefault(msg, 4, ""),
-    adults: jspb.Message.getFieldWithDefault(msg, 5, 0),
-    children: jspb.Message.getFieldWithDefault(msg, 6, 0),
-    infants: jspb.Message.getFieldWithDefault(msg, 7, 0),
-    travelclass: jspb.Message.getFieldWithDefault(msg, 8, ""),
-    roomquantity: jspb.Message.getFieldWithDefault(msg, 9, 0)
+originlocationcode: jspb.Message.getFieldWithDefault(msg, 1, ""),
+destinationlocationcode: jspb.Message.getFieldWithDefault(msg, 2, ""),
+departuredate: jspb.Message.getFieldWithDefault(msg, 3, ""),
+returndate: jspb.Message.getFieldWithDefault(msg, 4, ""),
+adults: jspb.Message.getFieldWithDefault(msg, 5, 0),
+children: jspb.Message.getFieldWithDefault(msg, 6, 0),
+infants: jspb.Message.getFieldWithDefault(msg, 7, 0),
+travelclass: jspb.Message.getFieldWithDefault(msg, 8, ""),
+roomquantity: jspb.Message.getFieldWithDefault(msg, 9, 0)
   };
 
   if (includeInstance) {
@@ -290,7 +290,7 @@ proto.packagetrip.PackageSearch.toObject = function(includeInstance, msg) {
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.packagetrip.PackageSearch}
  */
 proto.packagetrip.PackageSearch.deserializeBinary = function(bytes) {
@@ -315,19 +315,19 @@ proto.packagetrip.PackageSearch.deserializeBinaryFromReader = function(msg, read
     var field = reader.getFieldNumber();
     switch (field) {
     case 1:
-      var value = /** @type {string} */ (reader.readString());
+      var value = /** @type {string} */ (reader.readStringRequireUtf8());
       msg.setOriginlocationcode(value);
       break;
     case 2:
-      var value = /** @type {string} */ (reader.readString());
+      var value = /** @type {string} */ (reader.readStringRequireUtf8());
       msg.setDestinationlocationcode(value);
       break;
     case 3:
-      var value = /** @type {string} */ (reader.readString());
+      var value = /** @type {string} */ (reader.readStringRequireUtf8());
       msg.setDeparturedate(value);
       break;
     case 4:
-      var value = /** @type {string} */ (reader.readString());
+      var value = /** @type {string} */ (reader.readStringRequireUtf8());
       msg.setReturndate(value);
       break;
     case 5:
@@ -343,7 +343,7 @@ proto.packagetrip.PackageSearch.deserializeBinaryFromReader = function(msg, read
       msg.setInfants(value);
       break;
     case 8:
-      var value = /** @type {string} */ (reader.readString());
+      var value = /** @type {string} */ (reader.readStringRequireUtf8());
       msg.setTravelclass(value);
       break;
     case 9:
@@ -639,7 +639,7 @@ proto.packagetrip.PackageSearchResponse.prototype.toObject = function(opt_includ
  */
 proto.packagetrip.PackageSearchResponse.toObject = function(includeInstance, msg) {
   var f, obj = {
-    pb_package: jspb.Message.getFieldWithDefault(msg, 1, "")
+pb_package: jspb.Message.getFieldWithDefault(msg, 1, "")
   };
 
   if (includeInstance) {
@@ -652,7 +652,7 @@ proto.packagetrip.PackageSearchResponse.toObject = function(includeInstance, msg
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.packagetrip.PackageSearchResponse}
  */
 proto.packagetrip.PackageSearchResponse.deserializeBinary = function(bytes) {
@@ -677,7 +677,7 @@ proto.packagetrip.PackageSearchResponse.deserializeBinaryFromReader = function(m
     var field = reader.getFieldNumber();
     switch (field) {
     case 1:
-      var value = /** @type {string} */ (reader.readString());
+      var value = /** @type {string} */ (reader.readStringRequireUtf8());
       msg.setPackage(value);
       break;
     default:
@@ -769,7 +769,7 @@ proto.packagetrip.PackageSearchRequest.prototype.toObject = function(opt_include
  */
 proto.packagetrip.PackageSearchRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    packagesearch: (f = msg.getPackagesearch()) && proto.packagetrip.PackageSearch.toObject(includeInstance, f)
+packagesearch: (f = msg.getPackagesearch()) && proto.packagetrip.PackageSearch.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -782,7 +782,7 @@ proto.packagetrip.PackageSearchRequest.toObject = function(includeInstance, msg)
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.packagetrip.PackageSearchRequest}
  */
 proto.packagetrip.PackageSearchRequest.deserializeBinary = function(bytes) {
@@ -920,8 +920,8 @@ proto.packagetrip.Flight.prototype.toObject = function(opt_includeInstance) {
  */
 proto.packagetrip.Flight.toObject = function(includeInstance, msg) {
   var f, obj = {
-    intinerantes: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    price: jspb.Message.getFieldWithDefault(msg, 2, "")
+intinerantes: jspb.Message.getFieldWithDefault(msg, 1, ""),
+price: jspb.Message.getFieldWithDefault(msg, 2, "")
   };
 
   if (includeInstance) {
@@ -934,7 +934,7 @@ proto.packagetrip.Flight.toObject = function(includeInstance, msg) {
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.packagetrip.Flight}
  */
 proto.packagetrip.Flight.deserializeBinary = function(bytes) {
@@ -959,11 +959,11 @@ proto.packagetrip.Flight.deserializeBinaryFromReader = function(msg, reader) {
     var field = reader.getFieldNumber();
     switch (field) {
     case 1:
-      var value = /** @type {string} */ (reader.readString());
+      var value = /** @type {string} */ (reader.readStringRequireUtf8());
       msg.setIntinerantes(value);
       break;
     case 2:
-      var value = /** @type {string} */ (reader.readString());
+      var value = /** @type {string} */ (reader.readStringRequireUtf8());
       msg.setPrice(value);
       break;
     default:
@@ -1080,8 +1080,8 @@ proto.packagetrip.Hotel.prototype.toObject = function(opt_includeInstance) {
  */
 proto.packagetrip.Hotel.toObject = function(includeInstance, msg) {
   var f, obj = {
-    hotel: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    offers: jspb.Message.getFieldWithDefault(msg, 2, "")
+hotel: jspb.Message.getFieldWithDefault(msg, 1, ""),
+offers: jspb.Message.getFieldWithDefault(msg, 2, "")
   };
 
   if (includeInstance) {
@@ -1094,7 +1094,7 @@ proto.packagetrip.Hotel.toObject = function(includeInstance, msg) {
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.packagetrip.Hotel}
  */
 proto.packagetrip.Hotel.deserializeBinary = function(bytes) {
@@ -1119,11 +1119,11 @@ proto.packagetrip.Hotel.deserializeBinaryFromReader = function(msg, reader) {
     var field = reader.getFieldNumber();
     switch (field) {
     case 1:
-      var value = /** @type {string} */ (reader.readString());
+      var value = /** @type {string} */ (reader.readStringRequireUtf8());
       msg.setHotel(value);
       break;
     case 2:
-      var value = /** @type {string} */ (reader.readString());
+      var value = /** @type {string} */ (reader.readStringRequireUtf8());
       msg.setOffers(value);
       break;
     default:
@@ -1240,11 +1240,11 @@ proto.packagetrip.PackageCreate.prototype.toObject = function(opt_includeInstanc
  */
 proto.packagetrip.PackageCreate.toObject = function(includeInstance, msg) {
   var f, obj = {
-    userid: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    flight: (f = msg.getFlight()) && proto.packagetrip.Flight.toObject(includeInstance, f),
-    hotel: (f = msg.getHotel()) && proto.packagetrip.Hotel.toObject(includeInstance, f),
-    amount: jspb.Message.getFloatingPointFieldWithDefault(msg, 4, 0.0),
-    off: jspb.Message.getFloatingPointFieldWithDefault(msg, 5, 0.0)
+userid: jspb.Message.getFieldWithDefault(msg, 1, ""),
+flight: (f = msg.getFlight()) && proto.packagetrip.Flight.toObject(includeInstance, f),
+hotel: (f = msg.getHotel()) && proto.packagetrip.Hotel.toObject(includeInstance, f),
+amount: jspb.Message.getFloatingPointFieldWithDefault(msg, 4, 0.0),
+off: jspb.Message.getFloatingPointFieldWithDefault(msg, 5, 0.0)
   };
 
   if (includeInstance) {
@@ -1257,7 +1257,7 @@ proto.packagetrip.PackageCreate.toObject = function(includeInstance, msg) {
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.packagetrip.PackageCreate}
  */
 proto.packagetrip.PackageCreate.deserializeBinary = function(bytes) {
@@ -1282,7 +1282,7 @@ proto.packagetrip.PackageCreate.deserializeBinaryFromReader = function(msg, read
     var field = reader.getFieldNumber();
     switch (field) {
     case 1:
-      var value = /** @type {string} */ (reader.readString());
+      var value = /** @type {string} */ (reader.readStringRequireUtf8());
       msg.setUserid(value);
       break;
     case 2:
@@ -1532,7 +1532,7 @@ proto.packagetrip.PackageCreateRequest.prototype.toObject = function(opt_include
  */
 proto.packagetrip.PackageCreateRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    packagecreate: (f = msg.getPackagecreate()) && proto.packagetrip.PackageCreate.toObject(includeInstance, f)
+packagecreate: (f = msg.getPackagecreate()) && proto.packagetrip.PackageCreate.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -1545,7 +1545,7 @@ proto.packagetrip.PackageCreateRequest.toObject = function(includeInstance, msg)
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.packagetrip.PackageCreateRequest}
  */
 proto.packagetrip.PackageCreateRequest.deserializeBinary = function(bytes) {
@@ -1683,13 +1683,13 @@ proto.packagetrip.PackageResponse.prototype.toObject = function(opt_includeInsta
  */
 proto.packagetrip.PackageResponse.toObject = function(includeInstance, msg) {
   var f, obj = {
-    id: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    flight: (f = msg.getFlight()) && proto.packagetrip.Flight.toObject(includeInstance, f),
-    hotel: (f = msg.getHotel()) && proto.packagetrip.Hotel.toObject(includeInstance, f),
-    amount: jspb.Message.getFloatingPointFieldWithDefault(msg, 4, 0.0),
-    off: jspb.Message.getFloatingPointFieldWithDefault(msg, 5, 0.0),
-    updatedat: jspb.Message.getFieldWithDefault(msg, 6, 0),
-    createdat: jspb.Message.getFieldWithDefault(msg, 7, 0)
+id: jspb.Message.getFieldWithDefault(msg, 1, ""),
+flight: (f = msg.getFlight()) && proto.packagetrip.Flight.toObject(includeInstance, f),
+hotel: (f = msg.getHotel()) && proto.packagetrip.Hotel.toObject(includeInstance, f),
+amount: jspb.Message.getFloatingPointFieldWithDefault(msg, 4, 0.0),
+off: jspb.Message.getFloatingPointFieldWithDefault(msg, 5, 0.0),
+updatedat: jspb.Message.getFieldWithDefault(msg, 6, 0),
+createdat: jspb.Message.getFieldWithDefault(msg, 7, 0)
   };
 
   if (includeInstance) {
@@ -1702,7 +1702,7 @@ proto.packagetrip.PackageResponse.toObject = function(includeInstance, msg) {
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.packagetrip.PackageResponse}
  */
 proto.packagetrip.PackageResponse.deserializeBinary = function(bytes) {
@@ -1727,7 +1727,7 @@ proto.packagetrip.PackageResponse.deserializeBinaryFromReader = function(msg, re
     var field = reader.getFieldNumber();
     switch (field) {
     case 1:
-      var value = /** @type {string} */ (reader.readString());
+      var value = /** @type {string} */ (reader.readStringRequireUtf8());
       msg.setId(value);
       break;
     case 2:
@@ -2042,7 +2042,7 @@ proto.packagetrip.PackagesResponse.prototype.toObject = function(opt_includeInst
  */
 proto.packagetrip.PackagesResponse.toObject = function(includeInstance, msg) {
   var f, obj = {
-    packageresponseList: jspb.Message.toObjectList(msg.getPackageresponseList(),
+packageresponseList: jspb.Message.toObjectList(msg.getPackageresponseList(),
     proto.packagetrip.PackageResponse.toObject, includeInstance)
   };
 
@@ -2056,7 +2056,7 @@ proto.packagetrip.PackagesResponse.toObject = function(includeInstance, msg) {
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.packagetrip.PackagesResponse}
  */
 proto.packagetrip.PackagesResponse.deserializeBinary = function(bytes) {
@@ -2195,7 +2195,7 @@ proto.packagetrip.PackagesByUserRequest.prototype.toObject = function(opt_includ
  */
 proto.packagetrip.PackagesByUserRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    userid: jspb.Message.getFieldWithDefault(msg, 1, "")
+userid: jspb.Message.getFieldWithDefault(msg, 1, "")
   };
 
   if (includeInstance) {
@@ -2208,7 +2208,7 @@ proto.packagetrip.PackagesByUserRequest.toObject = function(includeInstance, msg
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.packagetrip.PackagesByUserRequest}
  */
 proto.packagetrip.PackagesByUserRequest.deserializeBinary = function(bytes) {
@@ -2233,7 +2233,7 @@ proto.packagetrip.PackagesByUserRequest.deserializeBinaryFromReader = function(m
     var field = reader.getFieldNumber();
     switch (field) {
     case 1:
-      var value = /** @type {string} */ (reader.readString());
+      var value = /** @type {string} */ (reader.readStringRequireUtf8());
       msg.setUserid(value);
       break;
     default:
